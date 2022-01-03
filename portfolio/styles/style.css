@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-gold: #bdae82;
+  --color-black: #000;
+  --color-white: #fff;
+  --font1: 60px;
+  --font2: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
