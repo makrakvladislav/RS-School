@@ -99,12 +99,13 @@ body {
 }
 
 .header__menu .nav__list .nav__item {
-  margin: 0 30px;
+  margin: 0px 15px;
   font-size: 20px;
   line-height: 50px;
 }
 
 .header__language {
+  margin-left: 20px;
   font-size: 20px;
   line-height: 50px;
 }
@@ -119,7 +120,7 @@ body {
 }
 
 .header__language .language__divider {
-  margin: 0 9px;
+  margin: 0 4px;
 }
 
 /* HERO SECTION */
@@ -131,8 +132,8 @@ body {
 }
 
 .hero__container {
-  max-width: 500px;
-  padding: 160px 0 330px 80px;
+  max-width: 540px;
+  padding: 160px 0 330px 60px;
 }
 
 .hero__title {
@@ -142,6 +143,7 @@ body {
 }
 
 .hero__description {
+  margin: 0;
   margin-bottom: 25px;
   font-size: 20px;
   line-height: 2;
