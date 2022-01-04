@@ -236,7 +236,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
 }
 
 .portfolio__tabs .tabs__head {
@@ -244,4 +244,26 @@ body {
   justify-content: center;
   margin-bottom: 60px;
   gap: 5px;
+}
+
+.portfolio__item {
+  height: 560px;
+}
+
+/* VIDEO SECTION */
+
+.video__player {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 705px;
+  background-image: url("../assets/img/video-bg.jpg");
+}
+
+.video__player .player__play {
+  width: 130px;
+  height: 130px;
+  background-color: transparent;
+  border: none;
 }
