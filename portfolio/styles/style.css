@@ -267,3 +267,43 @@ body {
   background-color: transparent;
   border: none;
 }
+
+/* PRICE SECTION */
+
+.price__container {
+  display: flex;
+  gap: 25px;
+}
+
+.price__card {
+  width: 100%;
+  padding: 40px 15px;
+  border: 3px solid var(--color-gold);
+  text-align: center;
+}
+
+.price__card .card__title {
+  margin-bottom: 20px;
+  font-family: "Merriweather", serif;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 2;
+}
+
+.price__card .card__price {
+  margin-bottom: 20px;
+  font-family: "Merriweather", serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 2;
+  color: var(--color-gold);
+}
+
+.price__card .card-description__list {
+  margin-bottom: 40px;
+}
+
+.price__card .card-description__list .list__item {
+  display: block;
+  line-height: 2;
+}
