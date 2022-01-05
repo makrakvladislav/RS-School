@@ -36,6 +36,10 @@ a:hover {
   color: var(--color-gold);
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .btn {
   max-width: 220px;
   width: 100%;
@@ -45,12 +49,22 @@ a:hover {
   cursor: pointer;
   background-color: var(--color-gold);
   border: 0;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  color: var(--color-white);
 }
 
 .btn--transparent {
   background-color: transparent;
   border: 2px solid var(--color-gold);
   color: var(--color-gold);
+}
+
+.btn--active {
+  background-color: var(--color-gold);
+  color: var(--color-black);
 }
 
 body {
@@ -80,6 +94,11 @@ body {
   transition: all 0.3s;
 }
 
+.icon:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
+
 .section-title {
   font-size: var(--font2);
   line-height: 2;
@@ -99,14 +118,14 @@ body {
   content: "";
   width: 100%;
   height: 2px;
-  background-color: #bdae82;
+  background-color: var(--color-gold);
 }
 
 .section-title:not(.contacts__title):before {
   content: "";
   width: 100%;
   height: 2px;
-  background-color: #bdae82;
+  background-color: var(--color-gold);
 }
 
 .section-title:not(.contacts__title) .section-title__wrapper {
@@ -269,6 +288,11 @@ body {
   height: 130px;
   background-color: transparent;
   border: none;
+}
+
+.video__player .player__play .icon {
+  width: 100%;
+  height: 100%;
 }
 
 /* PRICE SECTION */
