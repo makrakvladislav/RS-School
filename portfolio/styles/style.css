@@ -420,7 +420,7 @@ textarea {
 }
 
 .footer__item .github-link {
-  display: flex;
+  display: inline-flex;
   gap: 20px;
 }
 
