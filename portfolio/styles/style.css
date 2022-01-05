@@ -81,32 +81,35 @@ body {
 }
 
 .section-title {
+  font-size: var(--font2);
+  line-height: 2;
+  color: var(--color-gold);
+}
+
+.section-title:not(.contacts__title) {
   display: flex;
   align-items: center;
   max-width: 50%;
   margin: 0 auto;
   margin-bottom: 60px;
   text-align: center;
-  font-size: var(--font2);
-  line-height: 2;
-  color: var(--color-gold);
 }
 
-.section-title:after {
+.section-title:not(.contacts__title):after {
   content: "";
   width: 100%;
   height: 2px;
   background-color: #bdae82;
 }
 
-.section-title:before {
+.section-title:not(.contacts__title):before {
   content: "";
   width: 100%;
   height: 2px;
   background-color: #bdae82;
 }
 
-.section-title__wrapper {
+.section-title:not(.contacts__title) .section-title__wrapper {
   display: block;
   padding: 0 20px;
 }
@@ -247,7 +250,7 @@ body {
 }
 
 .portfolio__item {
-  height: 560px;
+  display: flex;
 }
 
 /* VIDEO SECTION */
@@ -269,6 +272,10 @@ body {
 }
 
 /* PRICE SECTION */
+
+.price {
+  margin-bottom: 100px;
+}
 
 .price__container {
   display: flex;
@@ -306,4 +313,65 @@ body {
 .price__card .card-description__list .list__item {
   display: block;
   line-height: 2;
+}
+
+/* CONTACTS SECTION */
+
+.contacts {
+  height: 700px;
+  padding: 60px 0;
+  background: url("../assets/img/contacts-bg.jpg");
+  background-size: auto 700px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.contacts .section-title {
+  margin-bottom: 40px;
+}
+
+.contacts__container {
+  display: flex;
+  justify-content: end;
+}
+
+.contacts__wrapper {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts__form .form__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts__form input,
+textarea {
+  margin-bottom: 20px;
+  padding: 3px 20px;
+  font-size: 20px;
+  line-height: 2;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.contacts__form input::placeholder {
+  font-family: inherit;
+  font-size: 20px;
+  color: var(--color-gold);
+}
+
+.contacts__form textarea {
+  height: 100px;
+  margin-bottom: 30px;
+  resize: none;
+}
+
+.contacts__form textarea::placeholder {
+  font-family: inherit;
+  font-size: 20px;
+  color: var(--color-gold);
 }
