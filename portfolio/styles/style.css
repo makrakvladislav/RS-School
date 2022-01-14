@@ -548,6 +548,10 @@ textarea {
     width: 76px;
   }
 
+  .price {
+    margin-bottom: 55px;
+  }
+
   .price .section-title {
     margin-bottom: 58px;
   }
