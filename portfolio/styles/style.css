@@ -451,6 +451,26 @@ textarea {
 
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
+  :root {
+    --font1: 32px;
+    --font2: 32px;
+  }
+
+  .container {
+    padding: 0 60px;
+  }
+
+  .skills,
+  .portfolio,
+  .video,
+  .price {
+    padding-top: 88px !important;
+  }
+
+  .section-title:not(.contacts__title) {
+    max-width: 56%;
+  }
+
   .header {
     padding: 0 64px 0 60px;
     background-position: -5px -30px;
@@ -458,8 +478,22 @@ textarea {
   }
 
   .hero {
-    height: 590px;
+    height: 500px;
     background-position: -5px -120px;
     background-size: auto 620px;
+  }
+
+  .hero__container {
+    max-width: 60%;
+    padding: 78px 0 0px 0;
+  }
+
+  .hero__title {
+    margin-bottom: 20px;
+  }
+
+  .hero__description {
+    margin-bottom: 60px;
+    line-height: 24px;
   }
 }
