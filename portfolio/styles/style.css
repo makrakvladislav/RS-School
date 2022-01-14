@@ -498,6 +498,10 @@ textarea {
     line-height: 24px;
   }
 
+  .skills {
+    margin-bottom: 2px;
+  }
+
   .skills__item {
     width: calc(50% - 21px);
     margin-bottom: 74px;
