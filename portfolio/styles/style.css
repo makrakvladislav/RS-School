@@ -456,4 +456,10 @@ textarea {
     background-position: -5px -30px;
     background-size: auto 620px;
   }
+
+  .hero {
+    height: 590px;
+    background-position: -5px -120px;
+    background-size: auto 620px;
+  }
 }
