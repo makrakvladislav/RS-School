@@ -583,4 +583,22 @@ textarea {
   textarea {
     width: 100%;
   }
+
+  .footer {
+    flex-direction: column;
+    padding-top: 26px;
+    line-height: 24px;
+  }
+
+  .footer__item {
+    width: auto;
+  }
+
+  .footer__item:nth-child(1) {
+    margin-bottom: 16px;
+  }
+
+  .footer__item:nth-child(2) {
+    margin-bottom: 32px;
+  }
 }
