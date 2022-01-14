@@ -547,4 +547,17 @@ textarea {
   .video__player .player__play {
     width: 76px;
   }
+
+  .price .section-title {
+    margin-bottom: 58px;
+  }
+
+  .price__container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .price__card {
+    max-width: 420px;
+    margin-bottom: 25px;
+  }
 }
