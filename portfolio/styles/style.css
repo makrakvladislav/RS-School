@@ -457,7 +457,7 @@ textarea {
   }
 
   .container {
-    padding: 0 60px;
+    padding: 0 64px 0 60px;
   }
 
   .skills,
@@ -469,6 +469,7 @@ textarea {
 
   .section-title:not(.contacts__title) {
     max-width: 56%;
+    margin-bottom: 52px;
   }
 
   .header {
@@ -494,6 +495,24 @@ textarea {
 
   .hero__description {
     margin-bottom: 60px;
+    line-height: 24px;
+  }
+
+  .skills__item {
+    width: calc(50% - 21px);
+    margin-bottom: 74px;
+  }
+
+  .skills__item .item__title {
+    margin-bottom: 20px;
+  }
+
+  .skills__item .item__img {
+    margin-bottom: 25px;
+  }
+
+  .skills__item .item__description {
+    padding: 0 8px;
     line-height: 24px;
   }
 }
