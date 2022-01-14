@@ -76,7 +76,8 @@ body {
 }
 
 .container {
-  width: 1440px;
+  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -446,4 +447,13 @@ textarea {
 
 .social-menu__link .icon--twitter {
   height: 22px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 64px 0 60px;
+    background-position: -5px -30px;
+    background-size: auto 620px;
+  }
 }
