@@ -519,4 +519,32 @@ textarea {
     padding: 0 8px;
     line-height: 24px;
   }
+
+  .portfolio__tabs .tabs__head {
+    padding-top: 5px;
+    flex-wrap: wrap;
+  }
+
+  .portfolio__container {
+    justify-content: center;
+  }
+
+  .video {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .video .section-title {
+    margin-bottom: 59px;
+    max-width: 48%;
+  }
+
+  .video__player {
+    height: 418px;
+    background-image: url(../assets/img/video-bg-tablet.jpg);
+  }
+
+  .video__player .player__play {
+    width: 76px;
+  }
 }
