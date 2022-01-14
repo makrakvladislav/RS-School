@@ -564,4 +564,23 @@ textarea {
     max-width: 420px;
     margin-bottom: 25px;
   }
+
+  .contacts {
+    padding: 60px 0;
+    height: 600px;
+    background-size: auto 600px;
+  }
+
+  .contacts .section-title {
+    text-align: center;
+  }
+
+  .contacts__container {
+    justify-content: center;
+  }
+
+  .contacts__form input,
+  textarea {
+    width: 100%;
+  }
 }
