@@ -560,6 +560,7 @@ textarea {
     flex-wrap: wrap;
     justify-content: center;
   }
+
   .price__card {
     max-width: 420px;
     margin-bottom: 25px;
@@ -590,7 +591,7 @@ textarea {
 
   .footer {
     flex-direction: column;
-    padding-top: 26px;
+    padding: 26px 0 28px;
     line-height: 24px;
   }
 
