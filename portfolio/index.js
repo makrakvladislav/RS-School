@@ -1,3 +1,22 @@
+const body = document.body;
+const hamburger = document.querySelector('.header__hamburger');
+const menuWrapper = document.querySelector('.header');
+const nav = document.querySelector('.nav__list');
+
+function toggleMenu() {
+  menuWrapper.classList.toggle('open');
+  body.classList.toggle('menu-open');
+}
+hamburger.addEventListener('click', toggleMenu);
+
+function closeMenu(event) {
+  if (event.target.classList.contains('nav__link')) {
+    menuWrapper.classList.remove('open');
+    body.classList.remove('menu-open');
+  }
+}
+nav.addEventListener('click', closeMenu);
+
 console.log('Score: 100 / 100\n' +
   '-[X] Вёрстка валидная +10\n' +
   '  - для проверки валидности вёрстки используйте сервис https://validator.w3.org/\n' +
