@@ -157,7 +157,7 @@ body {
     contrast(87%);
 }
 
-.header__menu-wrapper {
+.header__menu {
   margin-left: auto;
 }
 
@@ -276,6 +276,11 @@ body {
 
 .portfolio__item {
   display: flex;
+}
+
+.portfolio__item .item__image {
+  max-width: 450px;
+  width: 100%;
 }
 
 /* VIDEO SECTION */
@@ -519,6 +524,7 @@ textarea {
 
   .header.open .header__menu {
     right: 0px;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
   }
 
   .header__menu .nav__list {
@@ -552,13 +558,8 @@ textarea {
     transition: all 0.3s ease-in-out;
   }
 
-  .header.open .header__hamburger {
-    position: relative;
-    left: 5px;
-  }
-
   .header.open .header__hamburger .line {
-    width: 61px;
+    width: 50px;
     height: 2px;
   }
 
@@ -567,17 +568,17 @@ textarea {
   }
 
   .header.open .header__hamburger .line:nth-child(1) {
-    -webkit-transform: translateY(12px) rotate(45deg);
-    -ms-transform: translateY(12px) rotate(45deg);
-    -o-transform: translateY(12px) rotate(45deg);
-    transform: translateY(12px) rotate(45deg);
+    -webkit-transform: translateY(11px) rotate(45deg);
+    -ms-transform: translateY(11px) rotate(45deg);
+    -o-transform: translateY(11px) rotate(45deg);
+    transform: translateY(11px) rotate(45deg);
   }
 
   .header.open .header__hamburger .line:nth-child(3) {
-    -webkit-transform: translateY(-12px) rotate(-45deg);
-    -ms-transform: translateY(-12px) rotate(-45deg);
-    -o-transform: translateY(-12px) rotate(-45deg);
-    transform: translateY(-12px) rotate(-45deg);
+    -webkit-transform: translateY(-11px) rotate(-45deg);
+    -ms-transform: translateY(-11px) rotate(-45deg);
+    -o-transform: translateY(-11px) rotate(-45deg);
+    transform: translateY(-11px) rotate(-45deg);
   }
 
   .hero {
@@ -693,7 +694,7 @@ textarea {
 
   .footer {
     flex-direction: column;
-    padding: 26px 0 28px;
+    padding: 28px 0;
     line-height: 24px;
   }
 
@@ -710,8 +711,51 @@ textarea {
   }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 619px) {
   .header__menu {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 30px;
+  }
+
+  .header {
+    padding: 0 30px;
+  }
+
+  .hero__container {
+    max-width: 100%;
+  }
+
+  .section-title:not(.contacts__title) {
+    max-width: 100%;
+  }
+
+  .skills__item {
+    width: 100%;
+  }
+
+  .video {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .video .section-title {
+    padding: 0 30px;
+  }
+
+  .contacts {
+    padding-top: 30px;
+  }
+
+  .contacts__container.container {
+    padding: 0;
+  }
+
+  .footer.container {
+    padding: 26px 0 28px;
   }
 }
