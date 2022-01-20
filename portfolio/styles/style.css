@@ -545,6 +545,7 @@ textarea {
   .header__hamburger {
     margin-left: 21px;
     z-index: 100;
+    transition: 0.5s;
   }
 
   .header__hamburger .line {
@@ -560,6 +561,9 @@ textarea {
 
   .header__hamburger:hover .line {
     background-color: var(--color-gold);
+  }
+  .header.open .header__hamburger {
+    transform: scale(1.2);
   }
 
   .header.open .header__hamburger .line {
@@ -728,6 +732,10 @@ textarea {
 
   .header {
     padding: 0 30px;
+  }
+
+  .header__menu .nav__list {
+    padding: 136px 15px;
   }
 
   .hero__container {
