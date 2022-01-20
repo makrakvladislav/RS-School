@@ -550,12 +550,16 @@ textarea {
   .header__hamburger .line {
     width: 50px;
     height: 3px;
-    background-color: #ecf0f1;
+    background-color: var(--color-white);
     display: block;
     margin: 9px auto;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+  }
+
+  .header__hamburger:hover .line {
+    background-color: var(--color-gold);
   }
 
   .header.open .header__hamburger .line {
@@ -711,7 +715,7 @@ textarea {
   }
 }
 
-@media (max-width: 619px) {
+@media (max-width: 620px) {
   .header__menu {
     max-width: 100%;
   }
