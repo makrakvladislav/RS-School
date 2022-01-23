@@ -17,6 +17,24 @@ function closeMenu(event) {
 }
 nav.addEventListener('click', closeMenu);
 
+const portfolioBtns = document.querySelector('.tabs__head');
+const portfolioImages = document.querySelectorAll('.item__image');
+const portfolioBtn = document.querySelector('.tabs__item');
+const buttons = document.querySelectorAll('.tabs__item');
+
+function changeClassActive(activeClass) {
+  buttons.forEach(i => i.classList.remove(activeClass));
+  event.target.classList.add(activeClass);      
+}
+
+function changeImage(event) {
+  if(event.target.classList.contains('tabs__item')) {
+    changeClassActive('btn--active'); 
+    portfolioImages.forEach((img, index) => img.src = `./assets/img/${event.target.dataset.season}/${index + 1}.jpg`);
+  }
+}
+portfolioBtns.addEventListener('click', changeImage);
+
 console.log('Score: 100 / 100\n' +
   '-[X] Вёрстка валидная +10\n' +
   '  - для проверки валидности вёрстки используйте сервис https://validator.w3.org/\n' +
