@@ -35,6 +35,19 @@ function changeImage(event) {
 }
 portfolioBtns.addEventListener('click', changeImage);
 
+const seasons = ['winter', 'spring', 'summer', 'autumn'];
+function preloadImages() {
+  seasons.forEach((item) => {
+    for(let i = 1; i <= 6; i++) {
+      const img = new Image();
+      img.src = `./assets/img/${item}/${i}.jpg`;
+    }
+  })
+}
+preloadImages();
+
+
+
 console.log('Score: 100 / 100\n' +
   '-[X] Вёрстка валидная +10\n' +
   '  - для проверки валидности вёрстки используйте сервис https://validator.w3.org/\n' +
