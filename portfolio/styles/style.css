@@ -62,7 +62,7 @@ button:hover {
   color: var(--color-gold);
 }
 
-.btn--active {
+.btn.active {
   background-color: var(--color-gold);
   color: var(--color-black);
 }
@@ -182,7 +182,7 @@ body {
   transition: all 0.3s;
 }
 
-.header__language .language__item--active {
+.header__language .language__item.active {
   color: var(--color-gold);
 }
 
