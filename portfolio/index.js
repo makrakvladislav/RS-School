@@ -1,5 +1,6 @@
 import i18Obj from './translate.js';
 
+/* OPEN/CLOSE MENU */
 const body = document.body;
 const hamburger = document.querySelector('.header__hamburger');
 const menuWrapper = document.querySelector('.header');
@@ -19,12 +20,14 @@ function closeMenu(event) {
 }
 nav.addEventListener('click', closeMenu);
 
+/* CHANGE CLASS ACTIVE BUTTON */
 function changeClassActive(activeClass) {
   const button = document.querySelectorAll(`.${event.target.classList[0]}`);
   button.forEach(i => i.classList.remove(activeClass));
   event.target.classList.add(activeClass);      
 }
 
+/* CHANGE PORTFOLIO IMAGES  */
 const portfolioBtns = document.querySelector('.tabs__head');
 const portfolioImages = document.querySelectorAll('.item__image');
 
@@ -36,6 +39,7 @@ function changeImage(event) {
 }
 portfolioBtns.addEventListener('click', changeImage);
 
+/* IMAGE CACHING */
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
 function preloadImages() {
   seasons.forEach((item) => {
@@ -47,6 +51,7 @@ function preloadImages() {
 }
 preloadImages();
 
+/* PAGE TRASNLATE */
 function getTranslate(language) {
   const arr = i18Obj;
   const translateElements = document.querySelectorAll('[data-i18]').forEach(item => {
@@ -70,6 +75,7 @@ languageButtons.forEach(item => {
   });
 });
 
+/* SWITCHER PAGE MODE DARK/LIGHT */
 const themeModeWrapper = document.querySelector('.header__theme-mode');
 const themeModeButton = document.querySelector('.theme-mode__toggler');
 let themeName = body.className;
@@ -90,7 +96,6 @@ function setLocalStorage() {
 window.addEventListener('beforeunload', setLocalStorage);
 
 function getLocalStorage() {
-  
   if (localStorage.getItem('lang')) {
     lang = localStorage.getItem('lang');
     document.querySelectorAll('[data-language]').forEach(item => {
