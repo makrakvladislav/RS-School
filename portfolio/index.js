@@ -110,7 +110,7 @@ function getLocalStorage() {
  
   if (localStorage.getItem('theme')) {
     themeName = localStorage.getItem('theme');
-    console.log(themeName);
+    document.body.classList.add(themeName);
   }
 }
 window.addEventListener('load', getLocalStorage)
