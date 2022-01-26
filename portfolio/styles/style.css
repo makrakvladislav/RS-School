@@ -62,6 +62,8 @@ button:hover {
 
 .btn:hover {
   color: var(--color-white);
+  box-shadow: 0 1em 1em -0.4em var(--color-gold);
+  transform: translatey(-0.65em);
 }
 
 .light-theme .btn:hover {
@@ -137,6 +139,11 @@ body.light-theme {
 }
 
 .icon:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
+
+.light-theme .icon:hover {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
@@ -255,11 +262,11 @@ body.light-theme {
   margin: 0 4px;
 }
 
-.header__light-mode {
+.header__theme-mode {
   margin-left: 35px;
 }
 
-.light-mode__toggler {
+.theme-mode__toggler {
   width: 45px;
   height: 45px;
   padding: 0;
@@ -268,7 +275,7 @@ body.light-theme {
   background: url("../assets/svg/sun.svg") center center no-repeat;
 }
 
-.light-theme .light-mode__toggler {
+.light-theme .theme-mode__toggler {
   background: url("../assets/svg/moon.svg") center center no-repeat;
 }
 
