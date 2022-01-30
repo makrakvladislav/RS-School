@@ -60,10 +60,12 @@ button:hover {
   background-color: var(--color-white);
 }
 
-.btn:hover {
-  color: var(--color-white);
-  box-shadow: 0 1em 1em -0.4em var(--color-gold);
-  transform: translatey(-0.65em);
+@media (hover: hover) {
+  .btn:hover {
+    color: var(--color-white);
+    box-shadow: 0 1em 1em -0.4em var(--color-gold);
+    transform: translatey(-0.65em);
+  }
 }
 
 .light-theme .btn:hover {
@@ -108,7 +110,7 @@ body {
   transition: all 0.5s;
 }
 
-body.light-theme {
+.light-theme body {
   color: var(--color-black);
   background-color: var(--color-white);
 }
@@ -233,6 +235,10 @@ body.light-theme {
   margin: 0px 15px;
   font-size: 20px;
   line-height: 50px;
+}
+
+.light-theme .header__menu .nav__link:hover {
+  color: var(--color-white);
 }
 
 .header__language {
@@ -397,6 +403,11 @@ body.light-theme {
 
 .portfolio__item {
   display: flex;
+  transition: all 0.3s;
+}
+
+.portfolio__item:hover {
+  transform: scale(1.05);
 }
 
 .portfolio__item .item__image {
@@ -443,6 +454,11 @@ body.light-theme {
   padding: 40px 15px;
   border: 3px solid var(--color-gold);
   text-align: center;
+  transition: all 0.3s;
+}
+
+.price__card:hover {
+  transform: scale(1.05);
 }
 
 .price__card .card__title {
@@ -688,13 +704,9 @@ textarea {
 
   .header__menu .nav__list .nav__item {
     margin-bottom: 21px;
-    font-size: 34px;
-    line-height: 2;
-  }
-
-  .light-theme .header__menu .nav__list .nav__item {
     font-size: 40px;
     font-family: "Merriweather";
+    line-height: 2;
   }
 
   .header__language .language__divider {
