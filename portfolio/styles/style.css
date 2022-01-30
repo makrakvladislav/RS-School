@@ -62,8 +62,13 @@ button:hover {
 
 .btn:hover {
   color: var(--color-white);
-  box-shadow: 0 1em 1em -0.4em var(--color-gold);
-  transform: translatey(-0.65em);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    box-shadow: 0 1em 1em -0.4em var(--color-gold);
+    transform: translatey(-0.65em);
+  }
 }
 
 .light-theme .btn:hover {
@@ -329,8 +334,7 @@ body {
 .light-theme .hero__container .btn:hover {
   background-color: var(--color-black);
   color: var(--color-gold);
-  box-shadow: 0 1em 1em -0.4em #e9c88d;
-  transform: translatey(-0.65em);
+  box-shadow: 0 1em 1em -0.4em #e1cf99;
 }
 
 .light-theme .hero__container .btn {
