@@ -280,31 +280,22 @@ body {
   padding: 0;
   background: none;
   border: none;
-  /*background: url("../assets/svg/sun.svg") center center no-repeat;*/
-  -webkit-mask-image: url("../assets/svg/sun.svg");
-  mask-image: url("../assets/svg/sun.svg");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  background-color: var(--color-white);
+  background: url("../assets/svg/sun.svg") center center no-repeat;
   transition: all 0.3s;
 }
 
 .theme-mode__toggler:hover {
-  background-color: var(--color-gold);
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
 }
 
 .light-theme .theme-mode__toggler {
-  /*background: url("../assets/svg/moon.svg") center center no-repeat;*/
-  background-repeat: no-repeat;
-  -webkit-mask-image: url("../assets/svg/moon.svg");
-  mask-image: url("../assets/svg/moon.svg");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  background-color: var(--color-black);
+  background: url("../assets/svg/moon.svg") center center no-repeat;
 }
 
 .light-theme .theme-mode__toggler:hover {
-  background-color: var(--color-gold);
+  filter: invert(82%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
 }
 
 /* HERO SECTION */
