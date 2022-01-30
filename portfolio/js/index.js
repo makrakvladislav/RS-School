@@ -49,7 +49,6 @@ function preloadImages() {
     }
   })
 }
-preloadImages();
 
 /* PAGE TRASNLATE */
 function getTranslate(language) {
@@ -76,16 +75,16 @@ languageButtons.forEach(item => {
 });
 
 /* SWITCHER PAGE MODE DARK/LIGHT */
+const pageWrapper = document.documentElement;
 const themeModeWrapper = document.querySelector('.header__theme-mode');
 const themeModeButton = document.querySelector('.theme-mode__toggler');
-let themeName = body.className;
+let themeName = pageWrapper.className;
 
 function toggleThemeMode() {
   themeModeWrapper.classList.toggle('active');
-  body.classList.toggle('light-theme');
-  themeName = body.className;
+  pageWrapper.classList.toggle('light-theme');
+  themeName = pageWrapper.className;
 }
-
 themeModeButton.addEventListener('click', toggleThemeMode);
 
 /* SAVE TO LOCAL STORAGE */
@@ -107,15 +106,13 @@ function getLocalStorage() {
     })
     getTranslate(lang);
   }
- 
-  if (localStorage.getItem('theme')) {
-    themeName = localStorage.getItem('theme');
-    document.body.classList.add(themeName);
-  }
 }
-window.addEventListener('load', getLocalStorage)
+window.addEventListener("DOMContentLoaded", (e) => {
+  getLocalStorage();
+  preloadImages();
+});
 
-
+/*
 console.log('Score: 100 / 100\n' +
   '-[X] Вёрстка валидная +10\n' +
   '  - для проверки валидности вёрстки используйте сервис https://validator.w3.org/\n' +
@@ -178,3 +175,4 @@ console.log(
   `  - бургер-иконка, которая при клике превращается в крестик, создана при помощи css-анимаций без использования изображений +2\n` +
   `  - ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям +2\n` +
   `  - при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, - - - крестик превращается в бургер-иконку +4\n`);
+  */
