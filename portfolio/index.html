@@ -11,6 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/normalize.css">
   <link rel="stylesheet" href="./styles/style.css">
+  <script>
+    if (localStorage.getItem('theme')) {
+      themeName = localStorage.getItem('theme');
+      document.documentElement.classList.add(themeName);
+    }
+  </script>
 </head>
 <body>
   <header class="container header">
