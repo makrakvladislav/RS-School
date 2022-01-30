@@ -329,6 +329,8 @@ body {
 .light-theme .hero__container .btn:hover {
   background-color: var(--color-black);
   color: var(--color-gold);
+  box-shadow: 0 1em 1em -0.4em #e9c88d;
+  transform: translatey(-0.65em);
 }
 
 .light-theme .hero__container .btn {
