@@ -457,6 +457,7 @@ body {
   width: 30px;
   height: 30px;
   background: url("../assets/svg/play.svg") center center no-repeat;
+  transition: all 0.3s;
 }
 
 .player__controls .player__button.pause {
@@ -467,6 +468,7 @@ body {
   width: 35px;
   height: 30px;
   background: url("../assets/svg/volume.svg") center center no-repeat;
+  transition: all 0.3s;
 }
 
 .player__controls .player__button-volume.mute {
