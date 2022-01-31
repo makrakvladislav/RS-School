@@ -473,6 +473,17 @@ body {
   background: url("../assets/svg/mute.svg") center center no-repeat;
 }
 
+.player__controls .progress {
+  height: 10px;
+  background-color: rgba(33, 33, 33, 0.3);
+  cursor: ew-resize;
+}
+
+.player__controls .progress-bar {
+  height: 10px;
+  background-color: var(--color-gold);
+}
+
 /* PRICE SECTION */
 
 .price {
