@@ -411,7 +411,7 @@ body {
 }
 
 /* VIDEO SECTION */
-
+/*
 .video__player {
   position: relative;
   display: flex;
@@ -420,6 +420,7 @@ body {
   height: 705px;
   background-image: url("../assets/img/video-bg.jpg");
 }
+*/
 
 .video__player .player__play {
   width: 141px;
@@ -431,6 +432,45 @@ body {
 .video__player .player__play .icon {
   width: 100%;
   height: 100%;
+}
+
+.video-player {
+  height: 705px;
+}
+
+.video-player__video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.player__controls {
+  position: relative;
+  z-index: 100;
+}
+
+.player__controls button {
+  border: 0;
+}
+
+.player__controls .player__button {
+  width: 30px;
+  height: 30px;
+  background: url("../assets/svg/play.svg") center center no-repeat;
+}
+
+.player__controls .player__button.pause {
+  background: url("../assets/svg/pause.svg") center center no-repeat;
+}
+
+.player__controls .player__button-volume {
+  width: 35px;
+  height: 30px;
+  background: url("../assets/svg/volume.svg") center center no-repeat;
+}
+
+.player__controls .player__button-volume.mute {
+  background: url("../assets/svg/mute.svg") center center no-repeat;
 }
 
 /* PRICE SECTION */
