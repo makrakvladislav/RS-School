@@ -475,15 +475,30 @@ body {
   background: url("../assets/svg/mute.svg") center center no-repeat;
 }
 
-.player__controls .progress {
-  height: 10px;
-  background-color: rgba(33, 33, 33, 0.3);
-  cursor: ew-resize;
+.player__controls .progress-bar {
+  background: linear-gradient(
+    to right,
+    var(--color-gold) 0%,
+    var(--color-gold) 40%,
+    #fff 40%,
+    #fff 100%
+  );
+  border: solid 2px var(--color-gold);
+  border-radius: 8px;
+  height: 7px;
+  width: 100%;
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
 }
 
-.player__controls .progress-bar {
-  height: 10px;
-  background-color: var(--color-gold);
+.progress-bar::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  cursor: ew-resize;
+  background: #434343;
 }
 
 /* PRICE SECTION */
