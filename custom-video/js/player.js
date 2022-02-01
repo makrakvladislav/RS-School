@@ -3,56 +3,65 @@ const video = player.querySelector('.video-player__video');
 const progress = player.querySelector('.progress');
 const progressBar = player.querySelector('.progress-bar');
 const toggle = player.querySelector('.player__button');
-const ranges = player.querySelectorAll('.player__slider');
+const volumeSlider = player.querySelector('.player__volume');
 const volume = player.querySelector('.player__button-volume');
 
-console.log(player, video, progress, progressBar, toggle);
+let videoVolume = volumeSlider.value / 100;
+
+console.log(videoVolume);
 
 function toggleBtn() {
   if (video.paused) {
     video.play();
+    console.log(videoVolume)
+    video.volume = videoVolume;
   } else {
     video.pause();
+    video.volume = videoVolume;
   }
   toggle.classList.toggle('pause');
 }
 
 function toggleMute() {
-  if (video.muted == true) {
-    video.muted = false;
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    volume.setAttribute('data-volume', volume.value);
+    volume.value = 0;
   } else {
-    video.muted = true;
+    volume.value = volume.dataset.volume;
   }
   volume.classList.toggle('mute');
 }
 
-function handleRangesUpdate() {
-  console.log(this.name)
-  if (this.name == 'volume') {
-    if (this.value == 0) {
-      volume.classList.add('mute');
-    } else {
-      volume.classList.remove('mute');
-    }
+function handleVolume() {
+  if (this.value == 0) {
+    volume.classList.add('mute');
+    video.muted = true;
+  } else {
+    volume.classList.remove('mute');
+    video.muted = false;
   }
-  video[this.name] = this.value;
+  video[this.name] = this.value / 100;
 }
 
 function handleProgress() {
   const percent = (video.currentTime / video.duration) * 100;
   progressBar.value = percent;
-  progressBar.style.background = `linear-gradient(to right, #82CFD0 0%, #82CFD0 ${percent}%, #fff ${percent}%, white 100%)`
+  progressBar.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${percent}%, #fff ${percent}%, white 100%)`
 }
 
 function scrubProgress(event) {
   const scrubTime = (event.offsetX / progressBar.offsetWidth) * video.duration;
-  console.log(scrubTime);
   video.currentTime = scrubTime;
-
 }
-  
-ranges.forEach(range => range.addEventListener('change', handleRangesUpdate));
-ranges.forEach(range => range.addEventListener('mousemove', handleRangesUpdate));
+
+toggle.addEventListener('click', toggleBtn);
+video.addEventListener('click', toggleBtn);
+video.addEventListener('timeupdate', handleProgress);
+volume.addEventListener('click', toggleMute);
+volumeSlider.addEventListener('change', handleVolume);
+volumeSlider.addEventListener('input', handleVolume);
 
 let drag;
 let grap;
@@ -67,9 +76,6 @@ progressBar.addEventListener('mousemove', (event) => {
   }
 });
 
-toggle.addEventListener('click', toggleBtn);
-video.addEventListener('click', toggleBtn);
-volume.addEventListener('click', toggleMute);
-video.addEventListener('timeupdate', handleProgress);
+
 
 
