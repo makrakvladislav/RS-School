@@ -411,53 +411,90 @@ body {
 }
 
 /* VIDEO SECTION */
-/*
-.video__player {
+.video-player {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 705px;
-  background-image: url("../assets/img/video-bg.jpg");
+  height: 100%;
+  max-height: 705px;
+  overflow: hidden;
 }
-*/
 
-.video__player .player__play {
+.video-player .poster {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  background-image: url("../assets/img/video-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.video-player .poster.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.video-player .player__play {
   width: 141px;
   height: 135px;
   background-color: transparent;
   border: none;
+  position: absolute;
+  z-index: 3;
 }
 
-.video__player .player__play .icon {
+.video-player .player__play.hide {
+  display: none;
+}
+
+.video-player .player__play .icon {
   width: 100%;
   height: 100%;
-}
-
-.video-player {
-  height: 705px;
 }
 
 .video-player__video {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  position: relative;
+  z-index: 1;
 }
 
 .player__controls {
-  position: relative;
-  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  gap: 20px;
+  padding: 20px 20px;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  transform: translateY(100%) translateY(0px);
+  transition: all 0.3s;
+  background: rgba(0, 0, 0, 0.8);
 }
 
-.player__controls button {
+.video-player:hover .player__controls {
+  transform: translateY(0px);
+}
+
+.player__controls .controls__btn {
+  width: 30px;
+  height: 30px;
   border: 0;
+  transition: all 0.3s;
 }
 
 .player__controls .player__button {
-  width: 30px;
-  height: 30px;
   background: url("../assets/svg/play.svg") center center no-repeat;
-  transition: all 0.3s;
 }
 
 .player__controls .player__button.pause {
@@ -466,39 +503,74 @@ body {
 
 .player__controls .player__button-volume {
   width: 35px;
-  height: 30px;
   background: url("../assets/svg/volume.svg") center center no-repeat;
-  transition: all 0.3s;
 }
 
 .player__controls .player__button-volume.mute {
   background: url("../assets/svg/mute.svg") center center no-repeat;
 }
 
-.player__controls .progress-bar {
+.player__controls .range-slider {
+  max-width: 74%;
+  width: 100%;
+  height: 10px;
   background: linear-gradient(
     to right,
     var(--color-gold) 0%,
-    var(--color-gold) 40%,
-    #fff 40%,
-    #fff 100%
+    var(--color-gold) 0%,
+    rgb(200, 200, 200) 34%,
+    rgb(200, 200, 200) 100%
   );
-  border: solid 2px var(--color-gold);
-  border-radius: 8px;
-  height: 7px;
-  width: 100%;
+  border-radius: 5px;
   outline: none;
   transition: background 450ms ease-in;
   -webkit-appearance: none;
+  touch-action: none;
 }
 
-.progress-bar::-webkit-slider-thumb {
+.player__controls .controls__volume {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  gap: 20px;
+}
+
+.player__controls .range-slider.player__volume {
+  background: linear-gradient(
+    to right,
+    var(--color-gold) 25%,
+    var(--color-gold) 0%,
+    rgb(200, 200, 200) 34%,
+    rgb(200, 200, 200) 100%
+  );
+}
+
+.player__controls .range-slider:hover {
+  cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   -webkit-appearance: none;
   cursor: ew-resize;
-  background: #434343;
+  background: #fff;
+  -webkit-box-shadow: 4px 4px 17px -1px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 4px 4px 17px -1px rgba(0, 0, 0, 0.6);
+  box-shadow: 4px 4px 17px -1px rgba(0, 0, 0, 0.6);
+}
+
+.player__controls .player__button-fullscreen {
+  width: 35px;
+  background: url("../assets/svg/fullscreen-in.svg") center center no-repeat;
+  filter: invert(81%) sepia(3%) saturate(12%) hue-rotate(317deg) brightness(89%)
+    contrast(89%);
+}
+
+.player__controls .player__button-fullscreen.fullscreen-exit {
+  width: 35px;
+  background: url("../assets/svg/fullscreen-out.svg") center center no-repeat;
 }
 
 /* PRICE SECTION */
