@@ -747,6 +747,28 @@ textarea {
   line-height: 2.5;
 }
 
+.footer__logo {
+  transition: all 0.3s;
+}
+
+.footer__logo {
+  filter: invert(100%) sepia(0%) saturate(0%) brightness(100%) contrast(100%);
+}
+
+.light-theme .footer__logo {
+  filter: none;
+}
+
+.footer__logo:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
+
+.light-theme .footer__logo:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
+
 .footer__item {
   width: calc(100% / 3);
 }
