@@ -443,8 +443,8 @@ body {
 }
 
 .video-player .player__play {
-  width: 141px;
-  height: 135px;
+  width: 25%;
+  height: 25%;
   background-color: transparent;
   border: none;
   position: absolute;
@@ -493,26 +493,40 @@ body {
   transition: all 0.3s;
 }
 
+.player__controls .controls__btn:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
+
+@media (hover: hover) {
+  .player__controls .controls__btn:hover {
+    transform: scale(1.3);
+  }
+}
+
 .player__controls .player__button {
   background: url("../assets/svg/play.svg") center center no-repeat;
+  background-size: contain;
 }
 
 .player__controls .player__button.pause {
   background: url("../assets/svg/pause.svg") center center no-repeat;
+  background-size: contain;
 }
 
 .player__controls .player__button-volume {
   width: 35px;
   background: url("../assets/svg/volume.svg") center center no-repeat;
+  background-size: contain;
 }
 
 .player__controls .player__button-volume.mute {
   background: url("../assets/svg/mute.svg") center center no-repeat;
+  background-size: contain;
 }
 
 .player__controls .range-slider {
-  max-width: 74%;
-  width: 100%;
+  width: 74%;
   height: 10px;
   background: linear-gradient(
     to right,
@@ -549,6 +563,11 @@ body {
   cursor: pointer;
 }
 
+.player__controls .range-slider:hover::-webkit-slider-thumb {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
 .range-slider::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
@@ -559,6 +578,7 @@ body {
   -webkit-box-shadow: 4px 4px 17px -1px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 4px 4px 17px -1px rgba(0, 0, 0, 0.6);
   box-shadow: 4px 4px 17px -1px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s;
 }
 
 .player__controls .player__button-fullscreen {
@@ -566,6 +586,11 @@ body {
   background: url("../assets/svg/fullscreen-in.svg") center center no-repeat;
   filter: invert(81%) sepia(3%) saturate(12%) hue-rotate(317deg) brightness(89%)
     contrast(89%);
+}
+
+.player__controls .player__button-fullscreen:hover {
+  filter: invert(60%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
 }
 
 .player__controls .player__button-fullscreen.fullscreen-exit {
@@ -960,13 +985,37 @@ textarea {
     max-width: 48%;
   }
 
-  .video__player {
-    height: 418px;
-    background-image: url(../assets/img/video-bg-tablet.jpg);
+  .player__controls {
+    height: 90px;
+    position: initial;
+    transform: translateY(0%) translateY(0px);
   }
 
-  .video__player .player__play {
-    width: 76px;
+  .player__controls .range-slider {
+    border-radius: 0px;
+  }
+
+  .player__controls .progress-bar {
+    width: 100%;
+    position: absolute;
+    top: 1px;
+  }
+
+  .player__controls .player__button {
+    order: 1;
+  }
+
+  .player__controls .controls__volume {
+    width: 100%;
+    order: 2;
+  }
+
+  .player__controls .range-slider.player__volume {
+    width: 100%;
+  }
+
+  .player__controls .player__button-fullscreen {
+    order: 3;
   }
 
   .price {
@@ -1067,6 +1116,11 @@ textarea {
 
   .video .section-title {
     padding: 0 30px;
+  }
+
+  .player__controls .controls__btn {
+    width: 25px;
+    height: 25px;
   }
 
   .contacts {
