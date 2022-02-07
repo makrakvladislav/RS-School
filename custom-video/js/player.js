@@ -85,6 +85,10 @@ videoPosterButton.addEventListener('click', () => {
 });
 video.addEventListener('click', toggleBtn);
 video.addEventListener('timeupdate', handleProgress);
+video.onended = (eent) => {
+  toggle.classList.toggle('pause');
+  videoPosterButton.classList.remove('hide');
+};
 volume.addEventListener('click', toggleMute);
 volumeSlider.addEventListener('change', handleVolume);
 volumeSlider.addEventListener('input', handleVolume);
