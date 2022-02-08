@@ -3,10 +3,14 @@
 }
 
 :root {
-  --color-black: #000;
+  --color-black: #222;
   --color-white: #fff;
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
+  --color-yellow: #f5c518;
   --font1: 20px;
   --font2: 16px;
+  --font-family: "Fira Sans", sans-serif;
 }
 
 html {
@@ -14,9 +18,10 @@ html {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
-  font-family: "Anonymous Pro", monospace;
+  font-family: var(--font-family);
 }
 
 ul {
@@ -36,14 +41,23 @@ body {
   height: 100%;
   margin: 0;
   font-size: 16px;
-  font-family: "Anonymous Pro", monospace;
+  font-family: var(--font-family);
   color: var(--color-white);
   transition: all 0.5s;
+  /*
   background: -webkit-linear-gradient(top, #b3b3b0 0%, #e3e2dd 500px);
   background: -o-linear-gradient(top, #b3b3b0 0%, #e3e2dd 500px);
   background: linear-gradient(top, #b3b3b0 0%, #e3e2dd 500px);
   background-color: #e3e2dd;
   background-repeat: no-repeat;
+  */
+  background-color: var(--primary-color);
+}
+
+.header,
+.footer {
+  padding: 15px;
+  background-color: var(--secondary-color);
 }
 
 .wrapper {
@@ -86,4 +100,88 @@ body {
 
   /* Support for IE. */
   font-feature-settings: "liga";
+}
+
+/* HEADER */
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  padding: 10px;
+  background-color: var(--primary-color);
+  font-size: 13px;
+  color: var(--color-white);
+  border-radius: 5px;
+  line-height: 1;
+}
+
+.header__logo h1 {
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.header__search input {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+}
+
+/* MAIN */
+
+.movies__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 40px;
+  margin: 120px 0;
+}
+
+@keyframes slidein {
+  from {
+    max-height: 0px;
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    max-height: 1000px;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.movies__list .card {
+  /*
+  animation-duration: 0.5s;
+  animation-name: slidein;
+  */
+  display: grid;
+  box-shadow: 0 4px 5px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  color: var(--color-black);
+  overflow: hidden;
+  background-color: var(--secondary-color);
+  transition: all 0.3s;
+}
+
+.movies__list .card:hover {
+  transform: scale(1.1);
+}
+
+.movie .card__img {
+  width: 100%;
+}
+
+.movie .card__info-wrapper {
+  padding: 30px 15px;
+  color: var(--color-white);
+  font-size: 20px;
+  background-color: var(--secondary-color);
+}
+
+.movie .card__overview {
+  display: none;
 }
