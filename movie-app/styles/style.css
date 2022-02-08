@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --font1: 20px;
+  --font2: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: "Anonymous Pro", monospace;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Anonymous Pro", monospace;
+  color: var(--color-white);
+  transition: all 0.5s;
+  background: -webkit-linear-gradient(top, #b3b3b0 0%, #e3e2dd 500px);
+  background: -o-linear-gradient(top, #b3b3b0 0%, #e3e2dd 500px);
+  background: linear-gradient(top, #b3b3b0 0%, #e3e2dd 500px);
+  background-color: #e3e2dd;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.container {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
