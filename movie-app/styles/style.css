@@ -265,3 +265,15 @@ body {
 }
 
 /*FOOTER*/
+
+.footer .footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer .github-link {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+}
