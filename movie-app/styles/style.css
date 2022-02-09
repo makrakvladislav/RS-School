@@ -10,7 +10,7 @@
   --color-yellow: #f5c518;
   --font1: 20px;
   --font2: 16px;
-  --font-family: "Fira Sans", sans-serif;
+  --font-family: "Poppins", sans-serif;
 }
 
 html {
@@ -119,7 +119,7 @@ body {
 }
 
 .header__logo h1 {
-  font-weight: 900;
+  font-weight: 500;
   letter-spacing: -1px;
 }
 
@@ -128,6 +128,22 @@ body {
   border-radius: 5px;
   border: 0;
   outline: none;
+  background-color: var(--primary-color);
+  color: var(--color-white);
+}
+
+.search::-webkit-search-cancel-button {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: -3px;
+  right: -5px;
+  -webkit-appearance: none;
+  background-image: url(/assets/svg/clear.svg);
+}
+
+.header__search input::placeholder {
+  color: var(--color-white);
 }
 
 /* MAIN */
@@ -136,7 +152,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 40px;
-  margin: 120px 0;
+  margin-bottom: 100px;
 }
 
 @keyframes slidein {
@@ -159,6 +175,7 @@ body {
   animation-name: slidein;
   */
   display: grid;
+  position: relative;
   box-shadow: 0 4px 5px rgb(0 0 0 / 20%);
   border-radius: 5px;
   color: var(--color-black);
@@ -167,21 +184,84 @@ body {
   transition: all 0.3s;
 }
 
+.movies__list .card:after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  width: 200%;
+  height: 100%;
+  top: -90%;
+  left: -20px;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  background: linear-gradient(
+    to top,
+    transparent,
+    #fff 15%,
+    rgba(255, 255, 255, 0.5)
+  );
+  transition: 0.3s;
+}
+
 .movies__list .card:hover {
   transform: scale(1.1);
 }
 
-.movie .card__img {
-  width: 100%;
+.movies__list .card:hover:after {
+  transform: rotate(25deg);
+  top: -40%;
+  opacity: 0.15;
 }
 
-.movie .card__info-wrapper {
-  padding: 30px 15px;
+.movie .card__img {
+  width: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.card .card__info-wrapper {
+  min-height: 100px;
+  padding: 20px 15px;
   color: var(--color-white);
   font-size: 20px;
   background-color: var(--secondary-color);
 }
 
-.movie .card__overview {
+.card .card__info {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.card .card__overview {
   display: none;
 }
+
+.card .card__title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.card .card__rating {
+  padding: 10px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card .card__rating.green {
+  color: lightgreen;
+}
+
+.card .card__rating.orange {
+  color: orange;
+}
+
+.card .card__rating.red {
+  color: red;
+}
+
+/*FOOTER*/
