@@ -4,10 +4,11 @@
 
 :root {
   --color-black: #222;
-  --color-white: #fff;
+  --color-white: #f2f2f2;
   --primary-color: #22254b;
   --secondary-color: #373b69;
   --color-yellow: #f5c518;
+  --color-gray: #7c7c7c;
   --font1: 20px;
   --font2: 16px;
   --font-family: "Poppins", sans-serif;
@@ -36,6 +37,22 @@ a {
   transition: all 0.3s;
 }
 
+.btn {
+  padding: 10px 10px;
+  border: 0;
+  color: var(--color-white);
+  font-size: 16px;
+  border-radius: 3px;
+  background: var(--primary-color);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--color-white);
+  color: var(--primary-color);
+}
+
 html,
 body {
   height: 100%;
@@ -52,6 +69,10 @@ body {
   background-repeat: no-repeat;
   */
   background-color: var(--primary-color);
+}
+
+body.overlay-open {
+  overflow: hidden;
 }
 
 .header,
@@ -152,28 +173,11 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 40px;
+  margin-top: 60px;
   margin-bottom: 100px;
 }
 
-@keyframes slidein {
-  from {
-    max-height: 0px;
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  to {
-    max-height: 1000px;
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .movies__list .card {
-  /*
-  animation-duration: 0.5s;
-  animation-name: slidein;
-  */
   display: grid;
   position: relative;
   box-shadow: 0 4px 5px rgb(0 0 0 / 20%);
@@ -220,13 +224,13 @@ body {
 }
 
 .card .card__info-wrapper {
+  display: grid;
   min-height: 100px;
   padding: 20px 15px;
   color: var(--color-white);
   font-size: 20px;
   background-color: var(--secondary-color);
 }
-
 .card .card__info {
   height: 100%;
   display: flex;
@@ -235,8 +239,31 @@ body {
   gap: 10px;
 }
 
+.card .card__more-info {
+  margin-top: 20px;
+}
+
 .card .card__overview {
   display: none;
+  max-height: 100%;
+  padding: 30px 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-white);
+  transform: translateY(101%);
+  transition: all 0.3s;
+  overflow-y: auto;
+  line-height: 1;
+}
+
+.card .card__overview h3 {
+  margin-bottom: 20px;
+}
+
+.card:hover .card__overview {
+  transform: translateY(0%);
 }
 
 .card .card__title {
@@ -264,8 +291,159 @@ body {
   color: red;
 }
 
-/*FOOTER*/
+/* OVERLAY */
+.overlay {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
 
+.overlay-content {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  padding: 60px;
+  background-color: rgba(20, 20, 20, 0.15);
+  backdrop-filter: blur(25px);
+  color: var(--color-white);
+  border-radius: 5px;
+}
+
+.overlay-close {
+  position: fixed;
+  right: 70px;
+  top: 60px;
+}
+
+.overlay-close span {
+  font-size: 57px;
+}
+
+.overlay-close:hover {
+  cursor: pointer;
+}
+
+.overlay-content .movie-trailer iframe {
+  width: 100%;
+  height: 460px;
+}
+
+.overlay-content .movie-info {
+  flex-basis: 100%;
+}
+
+.overlay-content .movie-info .movie-title h3 {
+  font-size: 56px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.movie-description {
+  margin-bottom: 60px;
+}
+
+.movie-genres {
+  margin-top: 30px;
+}
+
+.movie-genres span {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-right: 15px;
+  background: var(--secondary-color);
+}
+
+.movie-description .description-item {
+  font-size: 30px;
+  color: var(--color-gray);
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.movie-overview {
+  margin-bottom: 50px;
+}
+
+.movie-overview .btn {
+  font-size: 20px;
+  padding: 15px 20px;
+  background: var(--secondary-color);
+}
+
+.movie-overview .btn:hover {
+  color: var(--color-white);
+  background: var(--primary-color);
+}
+
+.movie-overview-wrapper {
+  flex-basis: 50%;
+}
+
+.movie-overview p {
+  margin: 0;
+  font-size: 22px;
+  line-height: 37px;
+  margin-bottom: 60px;
+}
+
+.movie-info-wrapper {
+  display: flex;
+  gap: 60px;
+}
+
+.movie-actors {
+  flex-basis: 50%;
+}
+
+.movie-actors h3 {
+  margin-bottom: 40px;
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.actors-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.actors-list li {
+  display: flex;
+  flex-basis: 50%;
+  margin-bottom: 40px;
+  gap: 20px;
+  align-items: center;
+  font-size: 20px;
+}
+
+.actors-list .actor-photo {
+  width: 100%;
+  max-width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.actors-list .actor-name {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.actors-list .actor-name span {
+  color: var(--color-gray);
+  font-weight: 700;
+}
+
+/*FOOTER*/
 .footer .footer-wrapper {
   display: flex;
   align-items: center;
