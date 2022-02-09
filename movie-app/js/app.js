@@ -31,6 +31,14 @@ function showData(data) {
     const rating = element.vote_average;
     const overview = element.overview;
     const id = element.id;
+    let ratingColor = '';
+    if (rating >= 7.5) {
+      ratingColor = 'green';
+    } else if (rating < 7.5 && rating > 4.5) {
+      ratingColor = 'orange';
+    } else {
+      ratingColor = 'red';
+    }
     //const video = element.videos.results[0].key;
     //console.log(element[index].videos.results[0].key);
     //let dynamicHeight = Math.ceil(Math.random() * 30) + 100;
@@ -39,12 +47,12 @@ function showData(data) {
     <div class="card__info-wrapper">
       <div class="card__info">
         <h3 class="card__title">${title}</h3>
-        <span class="card__rating">${rating}</span>
+        <span class="card__rating ${ratingColor}">${rating}</span>
       </div>
     </div>  
     <div class="card__overview">${overview}</div>
     </div>`
-   
+
     moviesList.insertAdjacentHTML('beforeend', cardTemplate);
   });
 
