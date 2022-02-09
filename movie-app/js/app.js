@@ -116,7 +116,7 @@ function showPopup(element) {
       });
 
       let homePage = '';
-      if (data.homepage === null) {
+      if (data.homepage === null || data.homepage.length == 0) {
         homePage = '';
       } else {
         homePage = `<a href="${data.homepage}" class="btn" target="_blank">Learn to more</a>`;
