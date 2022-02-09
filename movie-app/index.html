@@ -1,53 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie-app</title>
-  <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles/normalize.css">
-  <link rel="stylesheet" href="./styles/style.css">
-</head>
-<body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="container">
-        <a href="/" class="header__logo">
-          <h1>Movie App</h1>
-        </a>
-        <div class="header__search">
-          <form id="search-form">
-            <input type="text" id="search" class="search" placeholder="Search">
-          </form>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie-app</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,900;1,600;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header-wrapper container">
+          <a href="/" class="header__logo">
+            <h1>Movie App</h1>
+          </a>
+          <div class="header__search">
+            <form id="search-form">
+              <input type="search" id="search" class="search clearable" placeholder="Search"  autocomplete="off" autofocus>
+            </form>
+          </div> 
         </div>
-      </div>
-    </header>
-    <main class="container main">
-      <div class="movies__list">	
-        <div class="movie">
-        </div>
-      </div>
-    </main>
+      </header>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer__item">
-          <a class="github-link" href="https://github.com/makrakvladislav" target="_blank">
-            <span>©</span><span>2022</span><span>github</span>
-          </a>
+      <main class="main">     
+        <!--
+        <section class="poster">
+          <h2 class="poster__title">1</h2>
+          <p class="poster__description">
+            2
+          </p>
+          <div class="poster__buttons">
+            <a href="#" class="btn">link</a>
+            <button class="btn">Trailer</button>
+          </div>
+        </section>
+        -->   
+        <div class="container movies__list"></div>
+        <div class="overlay">
+          <div class="overlay-content">
+            
+          </div>
+          <div class="overlay-close">
+            <span class="material-icons">
+            clear
+            </span>
+          </div>
         </div>
-        <div class="footer__item">
-          <a href="https://rs.school/js-stage0/" target="_blank">
-            <img class="footer__logo" src="./assets/svg/rs-logo.svg" width="150" alt="RS">
-          </a>
+      </main>
+      
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-wrapper">
+            <div class="footer__item">
+              <a class="github-link" href="https://github.com/makrakvladislav" target="_blank">
+                <span>©</span><span>2022</span><span>github</span>
+              </a>
+            </div>
+            <div class="footer__item">
+              <a href="https://rs.school/js-stage0/" target="_blank">
+                <img class="footer__logo" src="./assets/svg/rs-logo.svg" width="150" alt="RS">
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </footer>
-  </div>
-</body>
+      </footer>
+    </div>
+    <script src="./js/app.js"></script>
+  </body>
 </html>
