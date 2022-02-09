@@ -160,7 +160,7 @@ body.overlay-open {
   top: -3px;
   right: -5px;
   -webkit-appearance: none;
-  background-image: url(./assets/svg/clear.svg);
+  background-image: url("../assets/svg/clear.svg");
 }
 
 .header__search input::placeholder {
