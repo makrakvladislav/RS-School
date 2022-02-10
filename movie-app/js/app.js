@@ -20,7 +20,7 @@ getPosterData();
 
 const posterContainer = document.querySelector('.poster__wrapper');
 async function getPosterData() {
-  const res = await fetch(baseUrl + '/discover/movie/?'+apiKey+'&with_genres=28'+'&append_to_response=videos&region=US');
+  const res = await fetch(baseUrl+'/discover/movie/?'+apiKey+'&with_genres=28'+'&append_to_response=videos&region=US');
   const data = await res.json();
   posterContainer.innerHTML = '';
   console.log(data);
@@ -103,9 +103,9 @@ function showData(data) {
 
 function showMoviePage(element) {
   let id = element.id;
-  fetch(baseUrl + '/movie/'+id+'?'+apiKey+'&append_to_response=videos').then(res => res.json()).then(data => {
+  fetch(baseUrl+'/movie/'+id+'?'+apiKey+'&append_to_response=videos').then(res => res.json()).then(data => {
     console.log(data);
-    fetch(baseUrl + '/movie/'+id+'/credits?'+apiKey+'&append_to_response=videos').then(res => res.json()).then(credits => {
+    fetch(baseUrl+'/movie/'+id+'/credits?'+apiKey+'&append_to_response=videos').then(res => res.json()).then(credits => {
       moviePage.innerHTML = '';
       const movieDate = new Date(`${data.release_date}`);
 
