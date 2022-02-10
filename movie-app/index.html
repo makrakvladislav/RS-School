@@ -21,31 +21,23 @@
             <h1>Movie App</h1>
           </a>
           <div class="header__search">
-            <form id="search-form">
-              <input type="search" id="search" class="search clearable" placeholder="Search"  autocomplete="off" autofocus>
+            <form id="search-form" action> 
+              <input type="text" id="search" class="search" placeholder="Search" autocomplete="off" autofocus>
             </form>
+            <button class="form__clear">
+              <span class="material-icons">&#xe14c;</span>
+            </button>
           </div> 
         </div>
       </header>
 
       <main class="main">     
-        <!--
         <section class="poster">
-          <h2 class="poster__title">1</h2>
-          <p class="poster__description">
-            2
-          </p>
-          <div class="poster__buttons">
-            <a href="#" class="btn">link</a>
-            <button class="btn">Trailer</button>
-          </div>
+          <div class="poster__wrapper"></div>
         </section>
-        -->   
         <div class="container movies__list"></div>
         <div class="overlay">
-          <div class="overlay-content">
-            
-          </div>
+          <div class="overlay-content"></div>
           <div class="overlay-close">
             <span class="material-icons">
             clear
