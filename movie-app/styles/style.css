@@ -191,7 +191,6 @@ body.overlay-open {
 /* POSTER */
 .poster {
   position: relative;
-  height: 520px;
   margin-top: 60px;
 }
 
@@ -199,6 +198,7 @@ body.overlay-open {
   max-width: 1600px;
   margin: 0 auto;
   height: 100%;
+  min-height: 520px;
   position: relative;
   padding: 100px 60px;
   background-size: cover;
