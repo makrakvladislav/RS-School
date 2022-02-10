@@ -20,7 +20,7 @@ getPosterData();
 
 const posterContainer = document.querySelector('.poster__wrapper');
 async function getPosterData() {
-  const res = await fetch(baseUrl+'/discover/movie/?'+apiKey+'&with_genres=28'+'&append_to_response=videos&region=US');
+  const res = await fetch('https://api.themoviedb.org/3/discover/movie/?'+apiKey+'&with_genres=28'+'&append_to_response=videos&region=US');
   const data = await res.json();
   posterContainer.innerHTML = '';
   console.log(data);
