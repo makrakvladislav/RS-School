@@ -378,6 +378,7 @@ body.overlay-open {
   color: var(--color-gray);
   font-weight: 600;
   margin-right: 20px;
+  text-shadow: 3px 2px 9px #000;
 }
 
 .movie-overview {
@@ -452,6 +453,7 @@ body.overlay-open {
 .actors-list .actor-name span {
   color: var(--color-gray);
   font-weight: 700;
+  text-shadow: 3px 2px 9px #000;
 }
 
 /*FOOTER*/
