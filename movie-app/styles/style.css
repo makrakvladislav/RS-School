@@ -212,11 +212,11 @@ body.overlay-open {
   position: absolute;
   top: 0px;
   left: 0px;
-  background: rgb(0, 0, 0);
+  background: rgb(34, 37, 75);
   background: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(34, 34, 34, 0) 100%
+    rgba(34, 37, 75, 1) 0%,
+    rgba(34, 37, 75, 0.22872899159663862) 60%
   );
   z-index: 1;
 }
