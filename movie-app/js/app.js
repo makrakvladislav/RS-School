@@ -216,6 +216,10 @@ form.addEventListener('submit', (event) =>{
   if (searchQuery) {
     getData(searchUrl+'&query='+searchQuery);
     search.value = searchQuery;
+    window.scrollTo({
+      top: 600,
+      behavior: "smooth"
+    });
   } else {
     getData(url);
   }
