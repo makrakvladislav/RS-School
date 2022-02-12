@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,900;1,600;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/media.css">
   </head>
   <body>
     <div class="wrapper">
@@ -32,11 +33,20 @@
         </div>
       </header>
 
-      <main class="main">     
+      <main class="main">    
+
         <section class="poster">
           <div class="poster__wrapper"></div>
         </section>
+
         <div class="container movies__list"></div>
+
+        <div class="container">
+          <button class="btn load-more">
+            load more <span class="material-icons">&#xe5d5;</span>
+          </button>
+        </div>
+        
         <div class="overlay">
           <div class="overlay-content"></div>
           <div class="overlay-close">
@@ -45,6 +55,7 @@
             </span>
           </div>
         </div>
+        
       </main>
       
       <footer class="footer">
