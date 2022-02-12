@@ -25,8 +25,8 @@ async function getData(url) {
   if (data.results.length !== 0) {
     currentPage = data.page;
     nextPage = currentPage + 1; 
-    console.log(data); 
-    console.log(currentPage);
+    //console.log(data); 
+    //console.log(currentPage);
     if (data.total_pages !== 1 && data.total_pages !== currentPage) {
       loadMore.classList.add('show');
     } else {
@@ -35,7 +35,7 @@ async function getData(url) {
     showData(data.results)
   } else {
     moviesList.innerHTML = '';
-    console.log('No results found');
+    //console.log('No results found');
     moviesList.insertAdjacentHTML('beforeend', `<h3>No results found</h3>`);
     loadMore.classList.remove('show');
   }
@@ -48,7 +48,7 @@ const posterContainer = document.querySelector('.poster__wrapper');
 async function getPosterData() {
   fetch(baseUrl+'/discover/movie/?'+apiKey+'&with_genres=28'+'&append_to_response=videos&region=US').then(res => res.json()).then(data => {
   posterContainer.innerHTML = '';
-  console.log(data);
+  //console.log(data);
   showPoster(data);
   });
 }
@@ -84,7 +84,7 @@ function showPoster(data) {
 }
 
 function showData(data) {
-  console.log(data);
+  //console.log(data);
   data.forEach((element) => {
 
     const moviePoster = element.poster_path === null ? 'https://via.placeholder.com/420?text=No+photo' : `https://image.tmdb.org/t/p/w500/${element.poster_path}`;
@@ -129,7 +129,7 @@ function showData(data) {
 function showMoviePage(element) {
   let id = element.id;
   fetch(baseUrl+'/movie/'+id+'?'+apiKey+'&append_to_response=videos').then(res => res.json()).then(data => {
-    console.log(data);
+    //console.log(data);
     fetch(baseUrl+'/movie/'+id+'/credits?'+apiKey+'&append_to_response=videos').then(res => res.json()).then(credits => {
       moviePage.innerHTML = '';
       const movieDate = new Date(`${data.release_date}`);
@@ -143,7 +143,6 @@ function showMoviePage(element) {
       } 
 
       let movieGenres = data.genres.map((element) => {
-        console.log(element.name);
         return `<button class="genres-btn btn" id="${element.id}">${element.name}</button>`
       }).join('');
 
@@ -218,7 +217,6 @@ function showMoviePage(element) {
           const data = await res.json();
           currentUrl = baseUrl+'/discover/movie/?'+apiKey+'&with_genres='+idCollection;
           lastUrl = currentUrl;
-          console.log(lastUrl);
           moviePage.innerHTML = '';
           moviesList.innerHTML = '';
           closePopup();
@@ -276,8 +274,6 @@ loadMore.addEventListener('click', () =>{
 });
 
 function loadPage(page) {
-    console.log(page)
     let url = lastUrl + '&page='+page;
-    console.log(url);
     getData(url);
 }
