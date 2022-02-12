@@ -1,25 +1,51 @@
 const apiKey = 'api_key=1939abe3d00976407f86acd63c341f94';
 const baseUrl = 'https://api.themoviedb.org/3';
-const url = baseUrl + '/discover/movie?sort_by=popularity.desc&'+apiKey;
+const url = baseUrl + '/discover/movie?sort_by=popularity.desc&'+apiKey+'&page=1';
 const searchUrl = baseUrl + '/search/movie?'+apiKey;
 
 const form = document.getElementById('search-form');
 const search = document.getElementById('search');
 const clearFormBtn =  document.querySelector('.form__clear');
 const moviePage = document.querySelector('.overlay-content');
+const moviesList = document.querySelector('.movies__list');
+
+let lastUrl;
+let currentPage;
+let nextPage;
+let currentUrl;
+const loadMore = document.querySelector('.load-more'); 
 
 getData(url);
 
 async function getData(url) {
+  lastUrl = url;
   const res = await fetch(url);
   const data = await res.json();
-  showData(data.results)
+  
+  if (data.results.length !== 0) {
+    currentPage = data.page;
+    nextPage = currentPage + 1; 
+    console.log(data); 
+    console.log(currentPage);
+    if (data.total_pages !== 1 && data.total_pages !== currentPage) {
+      loadMore.classList.add('show');
+    } else {
+      loadMore.classList.remove('show');
+    }
+    showData(data.results)
+  } else {
+    moviesList.innerHTML = '';
+    console.log('No results found');
+    moviesList.insertAdjacentHTML('beforeend', `<h3>No results found</h3>`);
+    loadMore.classList.remove('show');
+  }
 }
+
 
 getPosterData();
 
 const posterContainer = document.querySelector('.poster__wrapper');
-function getPosterData() {
+async function getPosterData() {
   fetch(baseUrl+'/discover/movie/?'+apiKey+'&with_genres=28'+'&append_to_response=videos&region=US').then(res => res.json()).then(data => {
   posterContainer.innerHTML = '';
   console.log(data);
@@ -31,8 +57,14 @@ function dateConverter(data) {
   return data.split('-').reverse().join('.')
 }
 
+function scrollTop() {
+  window.scrollTo({
+    top: 600,
+    behavior: "smooth"
+  });
+}
+
 function showPoster(data) {
-  console.log(data.results[0]);
   let idMovie = Math.floor(Math.random() * (20 - 0 + 1) + 0);
   let dataPoster = data.results[idMovie];
   const posterTitle = dataPoster.title;
@@ -53,14 +85,6 @@ function showPoster(data) {
 
 function showData(data) {
   console.log(data);
-  const moviesList = document.querySelector('.movies__list');
-  moviesList.innerHTML = '';
-
-  if (data.length == 0) {
-    console.log('No results found');
-    moviesList.insertAdjacentHTML('beforeend', `<h3>No results found</h3>`);
-  }
-  
   data.forEach((element) => {
 
     const moviePoster = element.poster_path === null ? 'https://via.placeholder.com/420?text=No+photo' : `https://image.tmdb.org/t/p/w500/${element.poster_path}`;
@@ -98,6 +122,7 @@ function showData(data) {
       showMoviePage(element);
     });
   });
+  
 }
 
 
@@ -132,7 +157,7 @@ function showMoviePage(element) {
       } else {
         movieHomePage = `<a href="${data.homepage}" class="btn" target="_blank">Learn to more</a>`;
       }
-
+      
       let movieCast = credits.cast.map((element) => {
         let img;
         if (element.profile_path === null) {
@@ -140,11 +165,18 @@ function showMoviePage(element) {
         } else {
           img = `https://image.tmdb.org/t/p/w500/${element.profile_path}`;
         }
+
+        let character;
+        if (element.profile_path === null || element.character.length === 0 ) {
+          character = '';
+        } else {
+          character = `<span>as ${element.character}</span>`;
+        }
         return `<li>
         <img src= '${img}' class="actor-photo" title="${element.name}">
         <div  class="actor-name">
           <a href='https://www.google.com/search?q=${element.name}' target="_blank">${element.name}</a>
-          <span>as ${element.character}</span>
+          ${character}
         </div>
         </li>`
       }).slice(0, 10).join('');
@@ -184,13 +216,14 @@ function showMoviePage(element) {
           let idCollection = event.target.getAttribute('id');
           const res = await fetch(baseUrl+'/discover/movie/?'+apiKey+'&with_genres='+idCollection);
           const data = await res.json();
+          currentUrl = baseUrl+'/discover/movie/?'+apiKey+'&with_genres='+idCollection;
+          lastUrl = currentUrl;
+          console.log(lastUrl);
           moviePage.innerHTML = '';
+          moviesList.innerHTML = '';
           closePopup();
-          showData(data.results)
-          window.scrollTo({
-            top: 600,
-            behavior: "smooth"
-          });
+          showData(data.results);
+          scrollTop();
         }
 
       });
@@ -216,11 +249,10 @@ form.addEventListener('submit', (event) =>{
   if (searchQuery) {
     getData(searchUrl+'&query='+searchQuery);
     search.value = searchQuery;
-    window.scrollTo({
-      top: 600,
-      behavior: "smooth"
-    });
+    scrollTop();
+    moviesList.innerHTML = '';
   } else {
+    moviesList.innerHTML = '';
     getData(url);
   }
 });
@@ -238,3 +270,14 @@ clearFormBtn.addEventListener("click", function(event){
   search.value = '';
   clearFormBtn.classList.remove('show');
 });
+
+loadMore.addEventListener('click', () =>{
+  loadPage(nextPage);
+});
+
+function loadPage(page) {
+    console.log(page)
+    let url = lastUrl + '&page='+page;
+    console.log(url);
+    getData(url);
+}
