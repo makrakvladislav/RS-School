@@ -2,83 +2,83 @@ document.addEventListener('DOMContentLoaded', () => {
   const cardsArray = [
     {
       name: 'Tickatus',
-      img: '/assets/img/card1.png'
+      img: './assets/img/card1.png'
     },
     {
       name: 'Tickatus',
-      img: '/assets/img/card1.png'
+      img: './assets/img/card1.png'
     },
     {
       name: 'Vanndar',
-      img: '/assets/img/card2.png'
+      img: './assets/img/card2.png'
     },
     {
       name: 'Vanndar',
-      img: '/assets/img/card2.png'
+      img: './assets/img/card2.png'
     },
     {
       name: 'Varden',
-      img: '/assets/img/card3.png'
+      img: './assets/img/card3.png'
     },
     {
       name: 'Varden',
-      img: '/assets/img/card3.png'
+      img: './assets/img/card3.png'
     },
     {
       name: 'Brukan',
-      img: '/assets/img/card4.png'
+      img: './assets/img/card4.png'
     },
     {
       name: 'Brukan',
-      img: '/assets/img/card4.png'
+      img: './assets/img/card4.png'
     },
     {
       name: 'AlAkir',
-      img: '/assets/img/card5.png'
+      img: './assets/img/card5.png'
     },
     {
       name: 'AlAkir',
-      img: '/assets/img/card5.png'
+      img: './assets/img/card5.png'
     },
     {
       name: 'Akazamzarak',
-      img: '/assets/img/card6.png'
+      img: './assets/img/card6.png'
     },
     {
       name: 'Akazamzarak',
-      img: '/assets/img/card6.png'
+      img: './assets/img/card6.png'
     },
     {
       name: 'Aranna Starseeker',
-      img: '/assets/img/card7.png'
+      img: './assets/img/card7.png'
     },
     {
       name: 'Aranna Starseeker',
-      img: '/assets/img/card7.png'
+      img: './assets/img/card7.png'
     },
     {
       name: 'Galewing',
-      img: '/assets/img/card8.png'
+      img: './assets/img/card8.png'
     },
     {
       name: 'Galewing',
-      img: '/assets/img/card8.png'
+      img: './assets/img/card8.png'
     },
     {
       name: 'Alexstrasza',
-      img: '/assets/img/card9.png'
+      img: './assets/img/card9.png'
     },
     {
       name: 'Alexstrasza',
-      img: '/assets/img/card9.png'
+      img: './assets/img/card9.png'
     },
     {
       name: 'Afk',
-      img: '/assets/img/card10.png'
+      img: './assets/img/card10.png'
     },
     {
       name: 'Afk',
-      img: '/assets/img/card10.png'
+      img: './assets/img/card10.png'
     }
   ]
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //card.setAttribute('data-name', cardsArray[i].name);
 
       backCard.classList.add('back-card');
-      backCard.setAttribute('src', '../assets/img/back.png');
+      backCard.setAttribute('src', './assets/img/back.png');
       frontCard.classList.add('front-card');
       frontCard.setAttribute('src', cardsArray[i].img);
 
