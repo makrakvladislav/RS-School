@@ -79,3 +79,62 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+/* GAME INFO */
+
+.game-info {
+  display: flex;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 40px 0;
+  font-size: 24px;
+  text-shadow: rgb(0 0 0) 2px 0px 0px, rgb(0 0 0) 1.75517px 0.95885px 0px,
+    rgb(0 0 0) 1.0806px 1.68294px 0px, rgb(0 0 0) 0.14147px 1.99499px 0px,
+    rgb(0 0 0) -0.83229px 1.81859px 0px, rgb(0 0 0) -1.60229px 1.19694px 0px,
+    rgb(0 0 0) -1.97998px 0.28224px 0px, rgb(0 0 0) -1.87291px -0.70157px 0px,
+    rgb(0 0 0) -1.30729px -1.5136px 0px, rgb(0 0 0) -0.42159px -1.95506px 0px,
+    rgb(0 0 0) 0.56732px -1.91785px 0px, rgb(0 0 0) 1.41734px -1.41108px 0px,
+    rgb(0 0 0) 1.92034px -0.55883px 0px;
+}
+
+.game-info div {
+  margin-right: 20px;
+}
+
+/* GRID */
+
+.grid {
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.card {
+  width: calc(20% - 20px);
+  height: 200px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card .back-card {
+  max-height: 200px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card .front-card {
+  width: 98%;
+  max-height: 210px;
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
