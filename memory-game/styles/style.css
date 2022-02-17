@@ -84,6 +84,8 @@ body {
 
 .game-info {
   display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
   max-width: 80%;
   margin: 0 auto;
   padding: 40px 0;
@@ -98,7 +100,12 @@ body {
 }
 
 .game-info div {
+  display: flex;
   margin-right: 20px;
+}
+
+.game-info div > span {
+  margin: 0 10px;
 }
 
 /* GRID */
@@ -119,6 +126,18 @@ body {
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform 0.5s;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 .card.flip {
