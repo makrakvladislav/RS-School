@@ -53,6 +53,32 @@ body {
   padding: 0 20px;
 }
 
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  transition: all 0.3s;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
 .main {
   flex: 1 1 auto;
 }
@@ -112,15 +138,26 @@ body {
 
 .grid {
   max-width: 800px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 20px;
   margin: 0 auto;
   perspective: 1000px;
 }
 
+.grid.grid-size-12 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.grid.grid-size-16 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.grid.grid-size-20 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
 .card {
-  width: calc(20% - 20px);
   height: 200px;
   position: relative;
   transform: scale(1);
@@ -147,13 +184,40 @@ body {
 .card .back-card {
   max-height: 200px;
   position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
   backface-visibility: hidden;
 }
 
 .card .front-card {
   width: 98%;
-  max-height: 210px;
   position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: -5px;
+  left: 0;
+  right: 0;
+  text-align: center;
   backface-visibility: hidden;
   transform: rotateY(180deg);
+}
+
+.grid-size-12 .card .front-card {
+  width: 80%;
+}
+
+.grid-size-16 .card .front-card {
+  width: 80%;
+}
+
+/* GAME END POPUP */
+.game-end {
+  display: none;
+}
+
+.game-end.show {
+  display: block;
 }
