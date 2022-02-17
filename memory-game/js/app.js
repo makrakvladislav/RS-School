@@ -82,27 +82,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ]
 
-  cardsArray.sort(() => {
-    return 0.5 - Math.random();
-  });
+  const startGameBtn = document.querySelector('.start-game');
+  const gridSizeBtn = document.querySelector('.grid-size');
+  let gridSize = 16;
+  let cardsInGame = 16;
+  function changeGridSize(event) {
+    console.log(event.target.getAttribute('data-grid-size'));
+    gridSize = event.target.getAttribute('data-grid-size');
+    cardsInGame = gridSize;
+  }
+  gridSizeBtn.addEventListener('click', changeGridSize);
 
+  function shuffleCards() {
+    let tempArr = cardsArray.slice(gridSize);
+    /*
+    cardsArray.sort(() => {
+      return 0.5 - Math.random();
+    });
+    */
+  }
 
   const grid = document.querySelector('.grid');
-  
   let selectedCards = [];
   let selectedCardsId = [];
   let scoreContainer = document.querySelector('.score span');
   let movesContainer = document.querySelector('.moves span');
   let timerContainer = document.querySelector('.time');
-
+  const gameEndContainer = document.querySelector('.game-end');
+  const gameResetBtn = document.querySelector('.game-end__reset');
+  let playerNameInput = document.querySelector('.player-name input');
+  let playerName = 'Unknown';
   /* COUNTERS */
   let score = 0;
   let moves = 0;
   let cardsOpen = 0;
-  const cardsInGame = 20;
+  let lastGames = [];
 
   function createGrid() {
-    for (let i = 0; i < cardsArray.length; i++) {
+    grid.className = 'grid';
+    grid.innerHTML = '';
+    grid.classList.add(`grid-size-${gridSize}`);
+    for (let i = 0; i < gridSize; i++) {
       let card = document.createElement('div');
       let backCard = document.createElement('img');
       let frontCard = document.createElement('img');
@@ -121,10 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  createGrid();
+  //createGrid();
 
   let lockGrid = false; 
-
   function flipCard() {
     if (lockGrid || this.classList.contains('open') || this.classList.contains('flip')) {
       return;
@@ -166,10 +185,19 @@ document.addEventListener('DOMContentLoaded', () => {
     moves++;
     movesContainer.textContent = moves;
     scoreContainer.textContent = score;
-    console.log(cardsOpen);
-    if (cardsInGame === cardsOpen) {
-      console.log('YOU WIN!!');
+    //console.log(cardsInGame);
+    //console.log(cardsOpen);
+    console.log(lastGames);
+    if (cardsInGame == cardsOpen) {
+      if (lastGames.length === 10) {
+        lastGames.pop();
+      }
+      lastGames.unshift({Name: playerName, Score: score, Moves: moves});
+      setLocalStorage('lastGames', lastGames);
+      gameEnd('You WIN!');
+      console.log(lastGames);
     }
+    
   }
 
   function timer(duration, display) {
@@ -186,16 +214,83 @@ document.addEventListener('DOMContentLoaded', () => {
         if (--timer < 0) {
             timer = duration;
             console.log('time out');
+            gameEnd('Time is over');
         }
     }, 1000);
   }
+  function stopTimer() {
+    
+  }
 
-  timer(3, timerContainer);
+  function gameStart() {
+    shuffleCards();
+    createGrid();
+    //timer(3, timerContainer);
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => {
+      card.addEventListener('click', flipCard);
+    });  
+  }
 
-  const cards = document.querySelectorAll('.card');
-  cards.forEach((card) => {
-    card.addEventListener('click', flipCard);
+  function gameEnd(gameEndText) {
+    gameEndContainer.classList.add('show');
+    const gameEndTitle = document.querySelector('.game-end__title');
+    const gameEndScore = document.querySelector('.game-end__score');
+    const gameEndMoves = document.querySelector('.game-end__moves');
+    gameEndTitle.textContent = gameEndText;
+    gameEndScore.textContent = score;
+    gameEndMoves.textContent = moves;
+    score = 0;
+    moves = 0;
+    cardsOpen = 0;
+    cardsInGame = 0;
+    showTableResults();
+  }
+
+  function gameReset() {
+    gameStart();
+    score = 0;
+    moves = 0;
+    movesContainer.textContent = 0;
+    scoreContainer.textContent = 0;
+    console.log('gameReset');
+    gameEndContainer.classList.remove('show');
+  }
+
+  function setLocalStorage(key, value) {
+    console.log(key)
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  function getLocalStorage() {
+    if (localStorage.getItem('lastGames')) {
+      lastGames = JSON.parse(localStorage.getItem('lastGames'));
+    }
+    console.log(lastGames);
+  }
+  getLocalStorage();
+
+  function showTableResults() {
+    const table = document.querySelector('.table-results');
+    table.innerHTML = '';
+    lastGames.forEach((item) => {
+      let tableCell = `
+      <tr>
+        <td>${item.Name}</td>
+        <td>${item.Score}</td>
+        <td>${item.Moves}</td>
+      </tr>`;
+      table.insertAdjacentHTML('beforeend', tableCell);
+    });
+  }
+
+  //gameStart();
+
+  startGameBtn.addEventListener('click', gameStart);
+  gameResetBtn.addEventListener('click', gameReset);
+  showTableResults();
+  playerNameInput.addEventListener('input', (event) => {
+    console.log(event.target.value)
+    playerName = event.target.value;
   });
-
-
 });
