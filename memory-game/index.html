@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory-game</title>
   <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./styles/normalize.css">
   <link rel="stylesheet" href="./styles/style.css">
 </head>
@@ -19,6 +20,26 @@
     </header>
   
     <main class="main container">
+
+      <div class="game-menu">
+        <div class="game-menu__left">
+          <div class="player-name">
+            <input type="text" placeholder="Type your name">
+          </div>
+          <div class="grid-size">
+            <button class="btn" data-grid-size="12">Easy</button>
+            <button class="btn" data-grid-size="16">Medium</button>
+            <button class="btn" data-grid-size="20">Hard</button>
+          </div>
+          <button class="btn start-game">New game</button>
+        </div>
+        <div class="game-menu__right">
+          <table class="table-results">
+          </table>
+        </div>
+      </div>
+    
+
       <div class="game-info">
         <div class="game-info__left">
           <div class="score">Score: <span>0</span></div>
@@ -32,6 +53,17 @@
       <section class="grid">
         
       </section>
+
+      <div class="game-end">
+        <h2 class="game-end__title"></h2>
+        <div class="game-end__score"></div>
+        <div class="game-end__moves"></div>
+        <button class="game-end__reset">
+          <span class="material-icons">
+            &#xe5d5;
+          </span>
+        </button>
+      </div>
     </main>
   
     <footer class="footer">
