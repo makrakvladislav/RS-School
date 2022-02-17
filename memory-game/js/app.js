@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedCardsId = [];
   let scoreContainer = document.querySelector('.score span');
   let movesContainer = document.querySelector('.moves span');
+  let timerContainer = document.querySelector('.time');
 
   /* COUNTERS */
   let score = 0;
@@ -125,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let lockGrid = false; 
 
   function flipCard() {
-    if (lockGrid || this.classList.contains('open')) {
+    if (lockGrid || this.classList.contains('open') || this.classList.contains('flip')) {
       return;
     }
     //console.log(this);
@@ -171,6 +172,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function timer(duration, display) {
+    let timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+            console.log('time out');
+        }
+    }, 1000);
+  }
+
+  timer(3, timerContainer);
 
   const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {
