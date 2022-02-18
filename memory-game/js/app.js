@@ -189,9 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
     moves++;
     movesContainer.textContent = moves;
     scoreContainer.textContent = score;
-    console.log(cardsInGame);
-    console.log(cardsOpen);
-    console.log(lastGames);
+    //console.log(cardsInGame);
+    //console.log(cardsOpen);
+    //console.log(lastGames);
     if (cardsInGame == cardsOpen) {
       if (lastGames.length === 10) {
         lastGames.pop();
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       lastGames.unshift({Name: playerName, Score: score, Moves: moves});
       setLocalStorage('lastGames', lastGames);
       gameEnd();
-      console.log(lastGames);
+      //console.log(lastGames);
     }
     
   }
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setLocalStorage(key, value) {
-    console.log(key)
+    //console.log(key)
     localStorage.setItem(key, JSON.stringify(value));
   }
 
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('lastGames')) {
       lastGames = JSON.parse(localStorage.getItem('lastGames'));
     }
-    console.log(lastGames);
+    //console.log(lastGames);
   }
   getLocalStorage();
 
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
   startGameBtn.addEventListener('click', gameStart);
   showTableResults();
   playerNameInput.addEventListener('input', (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
     playerName = event.target.value;
   });
 });
