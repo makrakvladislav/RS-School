@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  
   const gameMenuContainer = document.querySelector('.game-menu');
   const overflow = document.querySelector('.overflow');
   function gameMenu(state) {
@@ -117,26 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   gameMenu();
 
-  /*
-  const gameEndContainer = document.querySelector('.game-end');
-  const gameResetBtn = document.querySelector('.game-end__reset');
-  const mainMenuBtn = document.querySelector('.main-menu');
-  function gameEndMenu(state) {
-    if (state == 'hide') {
-      gameEndContainer.classList.add('hide');
-      overflow.classList.add('hide');
-    } else {
-      gameEndContainer.classList.remove('hide');
-      overflow.classList.remove('hide');
-    }
-    mainMenuBtn.addEventListener('click', () => {
-      gameEndMenu('hide');
-      gameMenu();
-    });
-  }
-  gameEndContainer.classList.add('hide');
-  */
-
   const grid = document.querySelector('.grid');
   let selectedCards = [];
   let selectedCardsId = [];
@@ -144,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let movesContainer = document.querySelector('.moves span');
   let playerNameInput = document.querySelector('.player-name input');
   let playerName = 'Player';
+
   /* COUNTERS */
   let score = 0;
   let moves = 0;
@@ -158,14 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
       let card = document.createElement('div');
       let backCard = document.createElement('img');
       let frontCard = document.createElement('img');
-      card.setAttribute('id', i);
-      //card.setAttribute('data-name', cardsArray[i].name);
 
+      card.setAttribute('id', i);
       backCard.classList.add('back-card');
       backCard.setAttribute('src', './assets/img/back.png');
       frontCard.classList.add('front-card');
       frontCard.setAttribute('src', shuffleArr[i].img);
-
       card.classList.add('card');
       card.appendChild(backCard);
       card.appendChild(frontCard);
@@ -173,19 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  //createGrid();
-
   let lockGrid = false; 
   function flipCard() {
     if (lockGrid || this.classList.contains('open') || this.classList.contains('flip')) {
       return;
     }
-    //console.log(this);
     let cardId = this.getAttribute('id');
     this.classList.toggle('flip');
     selectedCards.push(shuffleArr[cardId].name);
     selectedCardsId.push(cardId);
-    //console.log(selectedCards);
     if (selectedCards.length == 2) {
       lockGrid = true;
       setTimeout(checkMatch, 300);
@@ -203,8 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
       score +=100;
       cardsOpen +=2;
     } else {
-      //console.log('Not');
-      //console.log(cards[cardOne], cards[cardTwo])
       cards[cardOne].classList.remove('flip');
       cards[cardTwo].classList.remove('flip');
       if (score != 0) {
@@ -236,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     shuffleCards();
     createGrid();
     gameMenu('hide');
-    //timer(3, timerContainer);
     const cards = document.querySelectorAll('.card');
     cards.forEach((card) => {
       card.addEventListener('click', flipCard);
@@ -255,30 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     resultContainer.innerHTML = '';
     resultContainer.insertAdjacentHTML('beforeend', result);
-    //const gameEndTitle = document.querySelector('.game-end__title');
-    //const gameEndScore = document.querySelector('.game-end__score');
-    //const gameEndMoves = document.querySelector('.game-end__moves');
-    //gameEndTitle.textContent = gameEndText;
-    //gameEndScore.textContent = score;
-    //gameEndMoves.textContent = moves;
     score = 0;
     moves = 0;
     cardsOpen = 0;
     gameMenu();
     showTableResults();
   }
-
-  /*
-  function gameReset() {
-    gameEndMenu('hide');
-    gameStart();
-    score = 0;
-    moves = 0;
-    movesContainer.textContent = 0;
-    scoreContainer.textContent = 0;
-    console.log('gameReset');
-  }
-  */
 
   function setLocalStorage(key, value) {
     console.log(key)
@@ -316,40 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
   }
-
-  //gameStart();
-
   startGameBtn.addEventListener('click', gameStart);
-  //gameResetBtn.addEventListener('click', gameReset);
   showTableResults();
   playerNameInput.addEventListener('input', (event) => {
     console.log(event.target.value)
     playerName = event.target.value;
   });
 });
-
-
-//let timerContainer = document.querySelector('.time');
-/*
-function timer(duration, display) {
-  let timer = duration, minutes, seconds;
-  setInterval(function () {
-      minutes = parseInt(timer / 60, 10)
-      seconds = parseInt(timer % 60, 10);
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      display.textContent = minutes + ":" + seconds;
-
-      if (--timer < 0) {
-          timer = duration;
-          console.log('time out');
-          gameEnd('Time is over');
-      }
-  }, 1000);
-}
-function stopTimer() {
-  
-}
-*/
