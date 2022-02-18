@@ -82,36 +82,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ]
 
-  const startGameBtn = document.querySelector('.start-game');
-  const gridSizeBtn = document.querySelector('.grid-size');
   let gridSize = 16;
   let cardsInGame = 16;
   function changeGridSize(event) {
-    console.log(event.target.getAttribute('data-grid-size'));
     gridSize = event.target.getAttribute('data-grid-size');
     cardsInGame = gridSize;
+    let btn = document.querySelectorAll('.size-btn');
+    btn.forEach(i => i.classList.remove('active'))
+    event.target.classList.add('active');
   }
-  gridSizeBtn.addEventListener('click', changeGridSize);
 
+  const startGameBtn = document.querySelector('.start-game');
+  const gridSizeBtn = document.querySelector('.grid-size');
+  gridSizeBtn.addEventListener('click', changeGridSize);
+ 
   function shuffleCards() {
-    let tempArr = cardsArray.slice(gridSize);
-    /*
-    cardsArray.sort(() => {
+    shuffleArr = cardsArray.slice(cardsArray.length - gridSize);
+    shuffleArr.sort(() => {
       return 0.5 - Math.random();
     });
-    */
   }
+
+  
+  const gameMenuContainer = document.querySelector('.game-menu');
+  const overflow = document.querySelector('.overflow');
+  function gameMenu(state) {
+    if (state == 'hide') {
+      gameMenuContainer.classList.add(state);
+      overflow.classList.add(state);
+    } else {
+      gameMenuContainer.classList.remove('hide');
+      overflow.classList.remove('hide');
+    }
+  }
+  gameMenu();
+
+  /*
+  const gameEndContainer = document.querySelector('.game-end');
+  const gameResetBtn = document.querySelector('.game-end__reset');
+  const mainMenuBtn = document.querySelector('.main-menu');
+  function gameEndMenu(state) {
+    if (state == 'hide') {
+      gameEndContainer.classList.add('hide');
+      overflow.classList.add('hide');
+    } else {
+      gameEndContainer.classList.remove('hide');
+      overflow.classList.remove('hide');
+    }
+    mainMenuBtn.addEventListener('click', () => {
+      gameEndMenu('hide');
+      gameMenu();
+    });
+  }
+  gameEndContainer.classList.add('hide');
+  */
 
   const grid = document.querySelector('.grid');
   let selectedCards = [];
   let selectedCardsId = [];
   let scoreContainer = document.querySelector('.score span');
   let movesContainer = document.querySelector('.moves span');
-  let timerContainer = document.querySelector('.time');
-  const gameEndContainer = document.querySelector('.game-end');
-  const gameResetBtn = document.querySelector('.game-end__reset');
   let playerNameInput = document.querySelector('.player-name input');
-  let playerName = 'Unknown';
+  let playerName = 'Player';
   /* COUNTERS */
   let score = 0;
   let moves = 0;
@@ -132,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
       backCard.classList.add('back-card');
       backCard.setAttribute('src', './assets/img/back.png');
       frontCard.classList.add('front-card');
-      frontCard.setAttribute('src', cardsArray[i].img);
+      frontCard.setAttribute('src', shuffleArr[i].img);
 
       card.classList.add('card');
       card.appendChild(backCard);
@@ -151,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //console.log(this);
     let cardId = this.getAttribute('id');
     this.classList.toggle('flip');
-    selectedCards.push(cardsArray[cardId].name);
+    selectedCards.push(shuffleArr[cardId].name);
     selectedCardsId.push(cardId);
     //console.log(selectedCards);
     if (selectedCards.length == 2) {
@@ -185,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
     moves++;
     movesContainer.textContent = moves;
     scoreContainer.textContent = score;
-    //console.log(cardsInGame);
-    //console.log(cardsOpen);
+    console.log(cardsInGame);
+    console.log(cardsOpen);
     console.log(lastGames);
     if (cardsInGame == cardsOpen) {
       if (lastGames.length === 10) {
@@ -194,37 +226,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       lastGames.unshift({Name: playerName, Score: score, Moves: moves});
       setLocalStorage('lastGames', lastGames);
-      gameEnd('You WIN!');
+      gameEnd();
       console.log(lastGames);
     }
-    
-  }
-
-  function timer(duration, display) {
-    let timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-            console.log('time out');
-            gameEnd('Time is over');
-        }
-    }, 1000);
-  }
-  function stopTimer() {
     
   }
 
   function gameStart() {
     shuffleCards();
     createGrid();
+    gameMenu('hide');
     //timer(3, timerContainer);
     const cards = document.querySelectorAll('.card');
     cards.forEach((card) => {
@@ -232,30 +243,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });  
   }
 
-  function gameEnd(gameEndText) {
-    gameEndContainer.classList.add('show');
-    const gameEndTitle = document.querySelector('.game-end__title');
-    const gameEndScore = document.querySelector('.game-end__score');
-    const gameEndMoves = document.querySelector('.game-end__moves');
-    gameEndTitle.textContent = gameEndText;
-    gameEndScore.textContent = score;
-    gameEndMoves.textContent = moves;
+  function gameEnd() {
+    grid.innerHTML = '';
+    movesContainer.textContent = 0;
+    scoreContainer.textContent = 0;
+    let resultContainer = document.querySelector('.results');
+    let result = `
+      <h3>${playerName}, your result:</h3>
+      <p>Score: ${score}</p>
+      <p>Moves: ${moves}</p>
+    `;
+    resultContainer.innerHTML = '';
+    resultContainer.insertAdjacentHTML('beforeend', result);
+    //const gameEndTitle = document.querySelector('.game-end__title');
+    //const gameEndScore = document.querySelector('.game-end__score');
+    //const gameEndMoves = document.querySelector('.game-end__moves');
+    //gameEndTitle.textContent = gameEndText;
+    //gameEndScore.textContent = score;
+    //gameEndMoves.textContent = moves;
     score = 0;
     moves = 0;
     cardsOpen = 0;
-    cardsInGame = 0;
+    gameMenu();
     showTableResults();
   }
 
+  /*
   function gameReset() {
+    gameEndMenu('hide');
     gameStart();
     score = 0;
     moves = 0;
     movesContainer.textContent = 0;
     scoreContainer.textContent = 0;
     console.log('gameReset');
-    gameEndContainer.classList.remove('show');
   }
+  */
 
   function setLocalStorage(key, value) {
     console.log(key)
@@ -271,26 +294,62 @@ document.addEventListener('DOMContentLoaded', () => {
   getLocalStorage();
 
   function showTableResults() {
-    const table = document.querySelector('.table-results');
+    const table = document.querySelector('.table-result__body');
     table.innerHTML = '';
-    lastGames.forEach((item) => {
-      let tableCell = `
-      <tr>
-        <td>${item.Name}</td>
-        <td>${item.Score}</td>
-        <td>${item.Moves}</td>
-      </tr>`;
-      table.insertAdjacentHTML('beforeend', tableCell);
-    });
+    if (lastGames.length === 0) {
+      let noResults = `
+        <td colspan="3">
+          <h3 class="no-results">No results :(</h3>
+        </td
+      `; 
+      table.insertAdjacentHTML('beforeend', noResults);
+    } else {
+      lastGames.forEach((item) => {
+        let tableCell = `
+        <tr>
+          <td>${item.Name}</td>
+          <td>${item.Score}</td>
+          <td>${item.Moves}</td>
+        </tr>`;
+        table.insertAdjacentHTML('beforeend', tableCell);
+      });
+    }
+    
   }
 
   //gameStart();
 
   startGameBtn.addEventListener('click', gameStart);
-  gameResetBtn.addEventListener('click', gameReset);
+  //gameResetBtn.addEventListener('click', gameReset);
   showTableResults();
   playerNameInput.addEventListener('input', (event) => {
     console.log(event.target.value)
     playerName = event.target.value;
   });
 });
+
+
+//let timerContainer = document.querySelector('.time');
+/*
+function timer(duration, display) {
+  let timer = duration, minutes, seconds;
+  setInterval(function () {
+      minutes = parseInt(timer / 60, 10)
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+
+      if (--timer < 0) {
+          timer = duration;
+          console.log('time out');
+          gameEnd('Time is over');
+      }
+  }, 1000);
+}
+function stopTimer() {
+  
+}
+*/
