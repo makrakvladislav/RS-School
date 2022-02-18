@@ -21,20 +21,31 @@
   
     <main class="main container">
 
-      <div class="game-menu">
+      <div class="modal game-menu">
         <div class="game-menu__left">
           <div class="player-name">
             <input type="text" placeholder="Type your name">
           </div>
           <div class="grid-size">
-            <button class="btn" data-grid-size="12">Easy</button>
-            <button class="btn" data-grid-size="16">Medium</button>
-            <button class="btn" data-grid-size="20">Hard</button>
+            <button class="btn size-btn" data-grid-size="12">Easy</button>
+            <button class="btn size-btn active" data-grid-size="16">Medium</button>
+            <button class="btn size-btn" data-grid-size="20">Hard</button>
           </div>
           <button class="btn start-game">New game</button>
+          <div class="results">
+          </div>
         </div>
         <div class="game-menu__right">
-          <table class="table-results">
+          <h3>Last games</h3>
+          <table class="table-results" cellpadding="10">
+            <tr>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Moves</th>
+            </tr>
+            <tbody class="table-result__body">
+
+            </tbody>
           </table>
         </div>
       </div>
@@ -45,25 +56,13 @@
           <div class="score">Score: <span>0</span></div>
           <div class="moves">Moves: <span>0</span></div>
         </div>
-        <div class="game-info__right">
-          <div class="timer">Timer: <span class="time">01:00</span></div>
-        </div>
       </div>
 
       <section class="grid">
         
       </section>
 
-      <div class="game-end">
-        <h2 class="game-end__title"></h2>
-        <div class="game-end__score"></div>
-        <div class="game-end__moves"></div>
-        <button class="game-end__reset">
-          <span class="material-icons">
-            &#xe5d5;
-          </span>
-        </button>
-      </div>
+      <div class="overflow"></div>
     </main>
   
     <footer class="footer">
