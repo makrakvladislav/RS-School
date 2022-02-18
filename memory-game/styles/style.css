@@ -373,3 +373,9 @@ body {
   font-size: 20px;
   color: var(--color-black);
 }
+
+@media (max-width: 1024px) {
+  .modal {
+    flex-direction: column;
+  }
+}
