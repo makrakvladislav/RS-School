@@ -44,7 +44,7 @@ a {
   width: 100%;
   border: none;
   border-radius: 6px;
-  padding: 10px 15px;
+  padding: 10px 10px;
   background-color: transparent;
   color: var(--color-black);
   border: 2px solid #00000073;
@@ -103,15 +103,12 @@ body {
   white-space: nowrap;
   direction: ltr;
   transition: all 0.3s;
-
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-
   /* Support for IE. */
   font-feature-settings: "liga";
 }
@@ -165,7 +162,6 @@ body {
 
 .game-info div {
   display: flex;
-  margin-right: 20px;
 }
 
 .game-info div > span {
@@ -197,7 +193,10 @@ body {
 }
 
 .card {
-  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   position: relative;
   transform: scale(1);
   transform-style: preserve-3d;
@@ -210,26 +209,32 @@ body {
   user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome, Edge, Opera and Firefox */
 }
-.card:hover {
-  margin-top: -20px;
-  cursor: pointer;
-  z-index: 10;
-}
 
-.card:after {
-  content: "";
-  display: block;
-  height: 50%;
-  width: 69%;
-  margin: 0 auto;
-  margin-top: 40%;
-  transition: all 0.3s;
-}
+@media (hover: hover) {
+  .card:hover {
+    margin-top: -20px;
+    cursor: pointer;
+    z-index: 10;
+  }
 
-.card:hover::after {
-  -webkit-box-shadow: 0px 1px 27px 1px rgb(87, 87, 87, 0.6);
-  -moz-box-shadow: 0px 1px 27px 1px rgba(87, 87, 87, 0.6);
-  box-shadow: 0px 1px 27px 1px rgb(87, 87, 87, 0.6);
+  /*
+  .card:after {
+    content: "";
+    display: block;
+    height: 50%;
+    width: 69%;
+    margin: 0 auto;
+    margin-top: 40%;
+    transition: all 0.3s;
+  }
+ 
+
+  .card:hover {
+    -webkit-box-shadow: 0px 1px 27px 1px rgb(87, 87, 87, 0.6);
+    -moz-box-shadow: 0px 1px 27px 1px rgba(87, 87, 87, 0.6);
+    box-shadow: 0px 1px 27px 1px rgb(87, 87, 87, 0.6);
+  }
+  */
 }
 
 .card.flip {
@@ -237,7 +242,9 @@ body {
 }
 
 .card .back-card {
-  max-height: 200px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -248,13 +255,7 @@ body {
 }
 
 .card .front-card {
-  width: 98%;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  top: -5px;
-  left: 0;
-  right: 0;
+  width: 100%;
   text-align: center;
   backface-visibility: hidden;
   transform: rotateY(180deg);
@@ -378,5 +379,38 @@ body {
 @media (max-width: 1024px) {
   .modal {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-menu__right {
+    overflow-x: auto;
+  }
+
+  .modal {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: initial;
+  }
+
+  .grid-size-12 .card .front-card {
+    width: 100%;
+  }
+
+  .grid-size-16 .card .front-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    gap: 10px;
+  }
+
+  .footer-wrapper {
+    flex-direction: column;
+    gap: 20px;
   }
 }
