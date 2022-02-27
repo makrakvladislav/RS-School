@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie-app</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,900;1,600;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/media.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header-wrapper container">
+          <a href="https://rolling-scopes-school.github.io/makrakvladislav-JSFEPRESCHOOL/movie-app/" class="header__logo">
+            <h1>Movie App</h1>
+          </a>
+          <div class="header__search">
+            <form id="search-form" action> 
+              <input type="text" id="search" class="search" placeholder="Search" autocomplete="off" autofocus>
+            </form>
+            <button class="form__clear">
+              <span class="material-icons">&#xe14c;</span>
+            </button>
+          </div> 
+        </div>
+      </header>
+
+      <main class="main">    
+
+        <section class="poster">
+          <div class="poster__wrapper"></div>
+        </section>
+
+        <div class="container movies__list"></div>
+
+        <div class="container">
+          <button class="btn load-more">
+            load more <span class="material-icons">&#xe5d5;</span>
+          </button>
+        </div>
+        
+        <div class="overlay">
+          <div class="overlay-content"></div>
+          <div class="overlay-close">
+            <span class="material-icons">
+            clear
+            </span>
+          </div>
+        </div>
+
+      </main>
+      
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-wrapper">
+            <div class="footer__item">
+              <a class="github-link" href="https://github.com/makrakvladislav" target="_blank">
+                <span>©</span><span>2022</span><span>github</span>
+              </a>
+            </div>
+            <div class="footer__item">
+              <a href="https://rs.school/js-stage0/" target="_blank">
+                <img class="footer__logo" src="./assets/svg/rs-logo.svg" width="150" alt="RS">
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./js/app.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
